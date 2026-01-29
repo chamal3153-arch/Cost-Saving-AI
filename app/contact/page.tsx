@@ -1,6 +1,7 @@
 import Script from "next/script";
 import type { Metadata } from "next";
 import Link from "next/link";
+import ContactForm from "../components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us - Get a Custom AI Automation Proposal",
@@ -82,20 +83,13 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Google Forms Link */}
+              {/* Contact Form */}
               <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 md:p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Send Us a Message</h2>
-                <p className="text-gray-700 mb-4">
-                  Have questions or want to share details about your project? Fill out our form and we&apos;ll get back to you.
+                <p className="text-gray-700 mb-6">
+                  Have questions or want to share details about your project? Fill out the form below and we&apos;ll get back to you within one business day.
                 </p>
-                <a
-                  href="https://forms.gle/YOUR_GOOGLE_FORM_ID"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  Open Contact Form
-                </a>
+                <ContactForm />
               </div>
 
               {/* Email Contact */}
