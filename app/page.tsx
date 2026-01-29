@@ -74,12 +74,14 @@ export default function Home() {
             
             {/* Primary CTA Button - Left Aligned */}
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <Link
-                href="/contact"
+              <a
+                href="https://calendly.com/chamal-3153/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 text-base md:text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-fit"
               >
                 Get a Custom Plan
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -257,15 +259,17 @@ export default function Home() {
                 <p className="text-gray-700 mb-4">
                   Schedule a free 30-minute discovery call to discuss your automation needs.
                 </p>
-                <Link
-                  href="/contact"
+                <a
+                  href="https://calendly.com/chamal-3153/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700 text-lg"
                 >
                   Book Your Free Call
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -298,15 +302,17 @@ export default function Home() {
             <p className="text-lg md:text-xl text-black mb-8 md:mb-10 max-w-2xl leading-relaxed text-left">
               Let's find and fix it in a free 30-minute audit.
             </p>
-            <Link
-              href="/contact"
+            <a
+              href="https://calendly.com/chamal-3153/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-10 py-5 md:px-12 md:py-6 text-lg md:text-xl font-bold text-blue-600 bg-white rounded-lg hover:bg-gray-50 transition-all duration-200 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 hover:scale-105"
             >
               Book Your Free Audit Now
               <svg className="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </Link>
+            </a>
           </div>
     </div>
       </section>

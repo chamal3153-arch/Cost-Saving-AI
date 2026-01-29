@@ -30,10 +30,16 @@ export default function Contact() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Get a Custom Proposal for Your AI Agents
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
               Every business is unique. After understanding your specific workflows and goals on a strategy call,
               we provide a detailed, scoped proposal with a clear investment. No templates, no surprises.
             </p>
+            <a
+              href="#contact-form"
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Open Contact Form
+            </a>
           </div>
 
           {/* Two-Column Layout */}
@@ -79,7 +85,7 @@ export default function Contact() {
               </div>
 
               {/* Contact Form */}
-              <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 md:p-8">
+              <div id="contact-form" className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 md:p-8 scroll-mt-20">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Send Us a Message</h2>
                 <p className="text-gray-700 mb-6">
                   Have questions or want to share details about your project? Fill out the form below and we&apos;ll get back to you within one business day.

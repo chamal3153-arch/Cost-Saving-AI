@@ -214,12 +214,14 @@ export default function Services() {
             <p className="text-lg md:text-xl text-blue-100 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
               Book a free consultation to discuss your automation needs and get a custom proposal.
             </p>
-            <Link
-              href="/contact"
+            <a
+              href="https://calendly.com/chamal-3153/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-10 py-5 md:px-12 md:py-6 text-lg md:text-xl font-bold text-blue-600 bg-white rounded-lg hover:bg-gray-50 transition-all duration-200 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 hover:scale-105 mb-4"
             >
               Get a Custom Proposal
-            </Link>
+            </a>
           </div>
         </div>
       </section>
