@@ -43,7 +43,7 @@ This project is configured for deployment on [Cloudflare Pages](https://pages.cl
    - **Build command:** `npm run build`
    - **Build output directory:** `out`
    - **Node version:** 18 or higher
-   - **⚠️ IMPORTANT:** Leave the "Deploy command" field **EMPTY** - Cloudflare Pages automatically deploys after the build completes
+   - **⚠️ IMPORTANT:** Leave the "Deploy command" field **EMPTY** (or use `echo "Deployment handled by Cloudflare Pages"` if the field is required) - Cloudflare Pages automatically deploys after the build completes
 
 3. **Environment variables:**
    - Add any required environment variables in the Cloudflare Pages dashboard

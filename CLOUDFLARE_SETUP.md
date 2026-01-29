@@ -14,17 +14,25 @@ Your Cloudflare Pages project is currently configured with a deploy command (`np
    - Click on **Settings** in the left sidebar
    - Scroll down to **Builds & deployments** section
 
-3. **Remove the Deploy Command**
+3. **Fix the Deploy Command**
    - Find the **"Deploy command"** field
-   - **Delete/clear everything** in this field (leave it completely empty)
-   - **DO NOT** enter any command here
+   - **If the field can be left empty:** Delete/clear everything (leave it completely empty)
+   - **If the field is required:** Use this no-op command that does nothing but succeeds:
+     ```
+     echo "Deployment handled by Cloudflare Pages"
+     ```
+     Or simply:
+     ```
+     true
+     ```
+   - **DO NOT** use `npx wrangler deploy` - that's for Workers, not Pages
 
 4. **Verify Build Settings**
    Make sure these settings are correct:
    - **Build command:** `npm run build`
    - **Build output directory:** `out`
    - **Root directory:** (leave empty or set to `/`)
-   - **Deploy command:** (MUST BE EMPTY)
+   - **Deploy command:** (Leave empty OR use `echo "Deployment handled by Cloudflare Pages"` if field is required)
 
 5. **Save Changes**
    - Click **Save** or **Save and Deploy**
@@ -43,7 +51,7 @@ Your Cloudflare Pages project is currently configured with a deploy command (`np
 
 ## Expected Behavior After Fix
 
-Once the deploy command is removed:
+Once the deploy command is fixed (removed or set to a no-op):
 1. ✅ Build runs: `npm run build`
 2. ✅ Build completes successfully
 3. ✅ Pages automatically deploys the `out` directory
