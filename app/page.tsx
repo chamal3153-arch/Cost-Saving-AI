@@ -53,10 +53,12 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        suppressHydrationWarning
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData) }}
+        suppressHydrationWarning
       />
       {/* Hero Section - Top Center with Left Alignment */}
       <section className="bg-transparent py-12 md:py-20 lg:py-24">

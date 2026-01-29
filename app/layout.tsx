@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
 import { AnalyticsProvider } from "./components/AnalyticsProvider";
 import { CookieYesScript } from "./components/CookieYesScript";
+import { CalendlyScript } from "./components/CalendlyScript";
 import MobileMenu from "./components/MobileMenu";
 import "./globals.css";
 
@@ -101,12 +101,13 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://tekonai.com" />
-        {/* Load Calendly script for instant loading */}
-        <script src="https://assets.calendly.com/assets/external/widget.js" async defer />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Load Calendly script early for instant loading */}
+        <CalendlyScript />
+        
         {/* CookieYes Banner - Must load first */}
         <CookieYesScript />
 

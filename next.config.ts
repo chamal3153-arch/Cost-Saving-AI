@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Reduce preload warnings by optimizing resource hints
+  experimental: {
+    optimizePackageImports: ['react', 'react-dom'],
+  },
 };
 
 export default nextConfig;
