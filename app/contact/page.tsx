@@ -27,16 +27,16 @@ export default function Contact() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
           <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
               Get a Custom Proposal for Your AI Agents
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-4 sm:mb-6 px-4 sm:px-0">
               Every business is unique. After understanding your specific workflows and goals on a strategy call,
               we provide a detailed, scoped proposal with a clear investment. No templates, no surprises.
             </p>
             <a
               href="#contact-form"
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 min-h-[48px] touch-manipulation"
             >
               Open Contact Form
             </a>
@@ -77,11 +77,13 @@ export default function Contact() {
                   outline where AI agents can create the most value.
                 </p>
                 {/* Calendly widget - optimized loading */}
-                <CalendlyWidget 
-                  url="https://calendly.com/chamal-3153/30min"
-                  minWidth="320px"
-                  height="700px"
-                />
+                <div className="w-full overflow-hidden">
+                  <CalendlyWidget 
+                    url="https://calendly.com/chamal-3153/30min"
+                    minWidth="100%"
+                    height="700px"
+                  />
+                </div>
               </div>
 
               {/* Contact Form */}

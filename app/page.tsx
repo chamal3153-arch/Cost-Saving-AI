@@ -63,12 +63,12 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             {/* Headline - Left Aligned */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight text-left">
               Stop Overpaying for Manual Work
           </h1>
             
             {/* Sub-headline - Left Aligned */}
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed text-left">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl leading-relaxed text-left">
               We replace expensive, repetitive tasks with affordable AI automations for SMBs. Get a system, not a subscription.
             </p>
             
@@ -78,7 +78,7 @@ export default function Home() {
                 href="https://calendly.com/chamal-3153/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 text-base md:text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-fit"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 text-base md:text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-fit min-h-[48px] touch-manipulation"
               >
                 Get a Custom Plan
               </a>

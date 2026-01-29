@@ -5,6 +5,7 @@ import Image from "next/image";
 import Script from "next/script";
 import { AnalyticsProvider } from "./components/AnalyticsProvider";
 import { CookieYesScript } from "./components/CookieYesScript";
+import MobileMenu from "./components/MobileMenu";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -97,6 +98,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://tekonai.com" />
         {/* Preload Calendly for instant loading */}
@@ -114,19 +116,19 @@ export default function RootLayout({
         {/* Sticky Header */}
         <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16 md:h-20">
+            <div className="flex items-center justify-between h-16 md:h-20 relative">
               {/* Logo - Top Left */}
               <div className="flex-shrink-0">
-                <Link href="/" className="flex items-center gap-3">
+                <Link href="/" className="flex items-center gap-2 sm:gap-3">
                   <Image
                     src="/Company logo.png"
                     alt="Cost Saver AI"
                     width={180}
                     height={60}
-                    className="h-10 md:h-14 w-auto"
+                    className="h-8 sm:h-10 md:h-14 w-auto"
                     priority
                   />
-                  <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                     Cost Saver AI
                   </span>
                 </Link>
@@ -169,53 +171,23 @@ export default function RootLayout({
               </nav>
 
               {/* Get Custom Plan Button - Top Right */}
-              <div className="flex-shrink-0">
+              {/* Desktop CTA Button - Hidden on mobile */}
+              <div className="hidden md:flex flex-shrink-0">
                 <a
                   href="https://calendly.com/chamal-3153/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 min-h-[44px]"
                 >
                   Get a Custom Plan
                 </a>
               </div>
-            </div>
 
-            {/* Mobile Navigation - Visible on mobile only */}
-            <nav className="md:hidden pb-4 border-t border-gray-200 mt-2 pt-4">
-              <div className="flex flex-col space-y-2">
-                <Link
-                  href="/"
-                  className="px-4 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/services"
-                  className="px-4 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors"
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/agents"
-                  className="px-4 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors"
-                >
-                  AI Agents
-                </Link>
-                <Link
-                  href="/about"
-                  className="px-4 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  className="px-4 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors"
-                >
-                  Contact
-                </Link>
+              {/* Mobile Menu Toggle */}
+              <div className="md:hidden flex-shrink-0">
+                <MobileMenu />
               </div>
-            </nav>
+            </div>
           </div>
         </header>
 

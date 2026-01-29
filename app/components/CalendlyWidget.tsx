@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface CalendlyWidgetProps {
   url: string;
@@ -13,20 +13,29 @@ export default function CalendlyWidget({
   minWidth = '320px', 
   height = '700px' 
 }: CalendlyWidgetProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    // Ensure Calendly is initialized when component mounts
-    // Script is already loaded in layout head, so widget should appear instantly
-    if (typeof window !== 'undefined' && (window as any).Calendly) {
-      // Calendly auto-initializes when it finds elements with calendly-inline-widget class
-      // No manual initialization needed
-    }
+    // Check if mobile on mount and resize
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
     <div
-      className="calendly-inline-widget rounded-lg overflow-hidden"
+      className="calendly-inline-widget rounded-lg overflow-hidden w-full"
       data-url={url}
-      style={{ minWidth, height }}
+      style={{ 
+        minWidth: '100%',
+        width: '100%',
+        height: isMobile ? '600px' : height 
+      }}
     />
   );
 }
