@@ -28,7 +28,9 @@ Node version: 18 (or higher)          ✅ SET THIS
 2. **Builds & deployments section:**
 
    **Build command:**
-   - ✅ Keep: `npm run build`
+   - ⚠️ **CRITICAL:** Make sure this is set to: `npm run build`
+   - ❌ If it's empty, that's why your build isn't running!
+   - ✅ Set it to: `npm run build`
 
    **Build output directory:**
    - ✅ Set to: `out`
