@@ -29,8 +29,44 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on Cloudflare Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is configured for deployment on [Cloudflare Pages](https://pages.cloudflare.com/).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Deployment Steps
+
+1. **Connect your repository to Cloudflare Pages:**
+   - Go to [Cloudflare Dashboard](https://dash.cloudflare.com/) → Pages
+   - Click "Create a project" and connect your Git repository
+
+2. **Configure build settings:**
+   - **Build command:** `npm run build`
+   - **Build output directory:** `out`
+   - **Node version:** 18 or higher
+   - **⚠️ IMPORTANT:** Leave the "Deploy command" field **EMPTY** - Cloudflare Pages automatically deploys after the build completes
+
+3. **Environment variables:**
+   - Add any required environment variables in the Cloudflare Pages dashboard
+   - For example: `NEXT_PUBLIC_GA_ID` (if using Google Analytics)
+
+4. **Deploy:**
+   - Cloudflare Pages will automatically build and deploy on every push to your main branch
+   - Preview deployments are created for pull requests
+
+### Local Development
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+The site will be available at [http://localhost:3000](http://localhost:3000).
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+This creates a static export in the `out` directory, which is ready for deployment on Cloudflare Pages.

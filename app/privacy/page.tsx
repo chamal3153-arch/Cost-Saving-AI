@@ -40,9 +40,8 @@ export default function PrivacyPolicy() {
               <p className="mt-4">
                 <strong>Company Information:</strong><br />
                 Cost Saver AI<br />
-                [YOUR_REGISTERED_ADDRESS]<br />
                 Email: <a href="mailto:costsaverai@proton.me" className="text-blue-600 hover:text-blue-700 underline">costsaverai@proton.me</a><br />
-                Data Protection Officer: [DPO_NAME_AND_EMAIL]
+                Data Protection Officer: Chamal Abeytuga (<a href="mailto:costsaverai@proton.me" className="text-blue-600 hover:text-blue-700 underline">costsaverai@proton.me</a>)
               </p>
             </section>
 
@@ -517,7 +516,6 @@ export default function PrivacyPolicy() {
                 <li>Clicking the "Do Not Sell My Personal Information" link in our cookie banner</li>
                 <li>Adjusting cookie preferences to reject Marketing and Analytics cookies</li>
                 <li>Emailing us at <a href="mailto:costsaverai@proton.me" className="text-blue-600 hover:text-blue-700 underline">costsaverai@proton.me</a> with subject "CCPA Opt-Out Request"</li>
-                <li>Calling us at [PHONE_NUMBER] (if applicable)</li>
               </ul>
 
               <h3 className="text-xl font-semibold text-gray-900 mt-4 mb-2">
@@ -731,10 +729,7 @@ export default function PrivacyPolicy() {
               </p>
               <div className="mt-4 space-y-2">
                 <p>
-                  <strong>Cost Saver AI</strong><br />
-                  [YOUR_REGISTERED_ADDRESS]<br />
-                  [CITY, STATE, ZIP CODE]<br />
-                  [COUNTRY]
+                  <strong>Cost Saver AI</strong>
                 </p>
                 <p>
                   <strong>Email:</strong>{" "}
@@ -743,11 +738,8 @@ export default function PrivacyPolicy() {
                   </a>
                 </p>
                 <p>
-                  <strong>Data Protection Officer:</strong> [DPO_NAME]<br />
-                  <strong>DPO Email:</strong> <a href="mailto:[DPO_EMAIL]" className="text-blue-600 hover:text-blue-700 underline">[DPO_EMAIL]</a>
-                </p>
-                <p>
-                  <strong>Phone:</strong> [PHONE_NUMBER] (if applicable)
+                  <strong>Data Protection Officer:</strong> Chamal Abeytuga<br />
+                  <strong>DPO Email:</strong> <a href="mailto:costsaverai@proton.me" className="text-blue-600 hover:text-blue-700 underline">costsaverai@proton.me</a>
                 </p>
               </div>
 

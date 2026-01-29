@@ -46,5 +46,5 @@ ui-debug.log
 Thumbs.db
 .DS_Store
 
-# Netlify
-.netlify/
+# Cloudflare
+.wrangler/

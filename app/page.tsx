@@ -209,6 +209,85 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Contact Us Section */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                Get in Touch
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                Have questions about AI automation? Want to discuss your specific needs? We're here to help.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Email Contact */}
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-8 border border-blue-100">
+                <div className="flex items-center mb-4">
+                  <div className="bg-blue-600 rounded-lg p-3 mr-4">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">Email Us</h3>
+                </div>
+                <p className="text-gray-700 mb-4">
+                  Send us an email and we'll get back to you within one business day.
+                </p>
+                <a
+                  href="mailto:costsaverai@proton.me"
+                  className="text-blue-600 font-semibold hover:text-blue-700 text-lg break-all"
+                >
+                  costsaverai@proton.me
+                </a>
+              </div>
+
+              {/* Book a Call */}
+              <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-8 border border-cyan-100">
+                <div className="flex items-center mb-4">
+                  <div className="bg-cyan-600 rounded-lg p-3 mr-4">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">Book a Call</h3>
+                </div>
+                <p className="text-gray-700 mb-4">
+                  Schedule a free 30-minute discovery call to discuss your automation needs.
+                </p>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700 text-lg"
+                >
+                  Book Your Free Call
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+
+            {/* Additional Contact Info */}
+            <div className="mt-12 text-center">
+              <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">Data Protection Officer</h4>
+                <p className="text-gray-700">
+                  For privacy-related inquiries, contact: <strong>Chamal Abeytuga</strong>
+                </p>
+                <a
+                  href="mailto:costsaverai@proton.me"
+                  className="text-blue-600 hover:text-blue-700 font-semibold"
+                >
+                  costsaverai@proton.me
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section - Contrasting Background */}
       <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600 py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
