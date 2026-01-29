@@ -1,38 +1,30 @@
 # Cloudflare Pages Setup Guide
 
-## ⚠️ IMPORTANT: Remove Deploy Command
+## ✅ Proper Build Configuration
 
-Your Cloudflare Pages project is currently configured with a deploy command (`npx wrangler deploy`), which is causing deployment failures. **This must be removed** because Cloudflare Pages automatically deploys static sites after the build completes.
+This guide provides the correct build settings for deploying a Next.js static export to Cloudflare Pages.
 
-## Step-by-Step Fix
+## Step-by-Step Configuration
 
 1. **Go to Cloudflare Dashboard**
    - Visit: https://dash.cloudflare.com/
-   - Navigate to: **Pages** → Your Project Name
+   - Navigate to: **Workers & Pages** → **Pages** → Your Project Name
 
 2. **Open Project Settings**
    - Click on **Settings** in the left sidebar
    - Scroll down to **Builds & deployments** section
 
-3. **Fix the Deploy Command**
-   - Find the **"Deploy command"** field
-   - **If the field can be left empty:** Delete/clear everything (leave it completely empty)
-   - **If the field is required:** Use this no-op command that does nothing but succeeds:
-     ```
-     echo "Deployment handled by Cloudflare Pages"
-     ```
-     Or simply:
-     ```
-     true
-     ```
-   - **DO NOT** use `npx wrangler deploy` - that's for Workers, not Pages
-
-4. **Verify Build Settings**
-   Make sure these settings are correct:
+3. **Configure Build Settings**
+   Set these exact values:
+   - **Framework preset:** `Next.js (Static HTML Export)` or leave as "None"
    - **Build command:** `npm run build`
    - **Build output directory:** `out`
-   - **Root directory:** (leave empty or set to `/`)
-   - **Deploy command:** (Leave empty OR use `echo "Deployment handled by Cloudflare Pages"` if field is required)
+   - **Root directory:** (leave empty)
+   - **Node version:** `18` or higher (select from dropdown)
+   - **Deploy command:** (LEAVE COMPLETELY EMPTY - do not enter anything)
+
+4. **Save Changes**
+   - Click **Save** or **Save and Deploy**
 
 5. **Save Changes**
    - Click **Save** or **Save and Deploy**
@@ -42,20 +34,32 @@ Your Cloudflare Pages project is currently configured with a deploy command (`np
    - Click **Retry deployment** on the latest failed deployment
    - Or push a new commit to trigger a fresh deployment
 
-## Why This Happens
+## Why No Deploy Command?
 
-- `wrangler deploy` is for **Cloudflare Workers** (serverless functions)
-- **Cloudflare Pages** automatically deploys static files after the build
+- **Cloudflare Pages** automatically deploys static files after the build completes
 - Pages reads from the build output directory (`out`) and serves it directly
-- No deploy command is needed for static sites
+- `wrangler deploy` is for **Cloudflare Workers** (serverless functions), NOT for Pages
+- Static sites on Pages do NOT need a deploy command
 
-## Expected Behavior After Fix
+## Expected Behavior
 
-Once the deploy command is fixed (removed or set to a no-op):
+Once configured correctly:
 1. ✅ Build runs: `npm run build`
-2. ✅ Build completes successfully
-3. ✅ Pages automatically deploys the `out` directory
+2. ✅ Next.js generates static files in `out` directory
+3. ✅ Cloudflare Pages automatically detects and deploys the `out` directory
 4. ✅ Site goes live without errors
+
+## Build Process
+
+Your `package.json` has the correct build script:
+```json
+"build": "next build"
+```
+
+This runs Next.js build which:
+- Compiles your Next.js app
+- Generates static HTML files
+- Outputs everything to the `out` directory (configured in `next.config.ts`)
 
 ## Troubleshooting
 

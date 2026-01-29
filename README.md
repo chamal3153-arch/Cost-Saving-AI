@@ -39,11 +39,13 @@ This project is configured for deployment on [Cloudflare Pages](https://pages.cl
    - Go to [Cloudflare Dashboard](https://dash.cloudflare.com/) → Pages
    - Click "Create a project" and connect your Git repository
 
-2. **Configure build settings:**
+2. **Configure build settings (CRITICAL - Use these exact values):**
+   - **Framework preset:** `Next.js (Static HTML Export)` or "None"
    - **Build command:** `npm run build`
    - **Build output directory:** `out`
-   - **Node version:** 18 or higher
-   - **⚠️ IMPORTANT:** Leave the "Deploy command" field **EMPTY** (or use `echo "Deployment handled by Cloudflare Pages"` if the field is required) - Cloudflare Pages automatically deploys after the build completes
+   - **Root directory:** (leave empty)
+   - **Node version:** `18` or higher
+   - **⚠️ CRITICAL:** Leave the "Deploy command" field **COMPLETELY EMPTY** - Cloudflare Pages automatically deploys after the build completes. Do NOT enter any command here.
 
 3. **Environment variables:**
    - Add any required environment variables in the Cloudflare Pages dashboard
