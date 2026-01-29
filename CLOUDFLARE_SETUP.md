@@ -21,7 +21,7 @@ This guide provides the correct build settings for deploying a Next.js static ex
    - **Build output directory:** `out`
    - **Root directory:** (leave empty)
    - **Node version:** `18` or higher (select from dropdown)
-   - **Deploy command:** (LEAVE COMPLETELY EMPTY - do not enter anything)
+   - **Deploy command:** (LEAVE COMPLETELY EMPTY - do NOT type "deploy" or any other command)
 
 4. **Save Changes**
    - Click **Save** or **Save and Deploy**
