@@ -1,6 +1,6 @@
 'use client';
 
-import Script from 'next/script';
+import { useEffect } from 'react';
 
 interface CalendlyWidgetProps {
   url: string;
@@ -13,20 +13,20 @@ export default function CalendlyWidget({
   minWidth = '320px', 
   height = '700px' 
 }: CalendlyWidgetProps) {
+  useEffect(() => {
+    // Ensure Calendly is initialized when component mounts
+    // Script is already loaded in layout head, so widget should appear instantly
+    if (typeof window !== 'undefined' && (window as any).Calendly) {
+      // Calendly auto-initializes when it finds elements with calendly-inline-widget class
+      // No manual initialization needed
+    }
+  }, []);
+
   return (
-    <>
-      {/* Load Calendly script immediately for instant loading */}
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="beforeInteractive"
-      />
-      
-      {/* Calendly widget container - loads instantly */}
-      <div
-        className="calendly-inline-widget rounded-lg overflow-hidden"
-        data-url={url}
-        style={{ minWidth, height }}
-      />
-    </>
+    <div
+      className="calendly-inline-widget rounded-lg overflow-hidden"
+      data-url={url}
+      style={{ minWidth, height }}
+    />
   );
 }

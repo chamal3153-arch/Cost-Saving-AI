@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import { AnalyticsProvider } from "./components/AnalyticsProvider";
 import { CookieYesScript } from "./components/CookieYesScript";
 import "./globals.css";
@@ -98,6 +99,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://tekonai.com" />
+        {/* Preload Calendly for instant loading */}
+        <link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script" />
+        <script src="https://assets.calendly.com/assets/external/widget.js" async />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
