@@ -1,7 +1,7 @@
-import Script from "next/script";
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContactForm from "../components/ContactForm";
+import CalendlyWidget from "../components/CalendlyWidget";
 
 export const metadata: Metadata = {
   title: "Contact Us - Get a Custom AI Automation Proposal",
@@ -23,12 +23,7 @@ export const metadata: Metadata = {
 
 export default function Contact() {
   return (
-    <>
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="lazyOnload"
-      />
-      <section className="bg-gradient-to-b from-white to-gray-50 py-12 md:py-20 lg:py-24">
+    <section className="bg-gradient-to-b from-white to-gray-50 py-12 md:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
           <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
@@ -75,11 +70,11 @@ export default function Contact() {
                   Schedule your free 30-minute discovery call. We&apos;ll walk through your ideas, answer questions, and
                   outline where AI agents can create the most value.
                 </p>
-                {/* Calendly inline widget */}
-                <div
-                  className="calendly-inline-widget rounded-lg overflow-hidden"
-                  data-url="https://calendly.com/chamal-3153/30min"
-                  style={{ minWidth: "320px", height: "700px" }}
+                {/* Calendly widget - optimized loading */}
+                <CalendlyWidget 
+                  url="https://calendly.com/chamal-3153/30min"
+                  minWidth="320px"
+                  height="700px"
                 />
               </div>
 
@@ -109,6 +104,5 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </>
   );
 }
