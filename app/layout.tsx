@@ -101,9 +101,8 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://tekonai.com" />
-        {/* Preload Calendly for instant loading */}
-        <link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script" />
-        <script src="https://assets.calendly.com/assets/external/widget.js" async />
+        {/* Load Calendly script for instant loading */}
+        <script src="https://assets.calendly.com/assets/external/widget.js" async defer />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

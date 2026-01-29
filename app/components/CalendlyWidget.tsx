@@ -13,20 +13,13 @@ export default function CalendlyWidget({
   minWidth = '320px', 
   height = '700px' 
 }: CalendlyWidgetProps) {
-  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check if mobile on mount and resize
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+    setMounted(true);
   }, []);
 
+  // Use CSS media query instead of JS to avoid hydration mismatch
   return (
     <div
       className="calendly-inline-widget rounded-lg overflow-hidden w-full"
@@ -34,8 +27,9 @@ export default function CalendlyWidget({
       style={{ 
         minWidth: '100%',
         width: '100%',
-        height: isMobile ? '600px' : height 
+        height: mounted ? undefined : height
       }}
+      data-height={height}
     />
   );
 }

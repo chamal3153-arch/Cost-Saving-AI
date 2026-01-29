@@ -32,7 +32,10 @@ let gaLoaded = false;
  */
 export const initGA = () => {
   if (!GA_MEASUREMENT_ID) {
-    console.warn('GA_MEASUREMENT_ID not set. Analytics disabled.');
+    // Silently skip if GA ID not set (no console warning in production)
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('GA_MEASUREMENT_ID not set. Analytics disabled.');
+    }
     return;
   }
 

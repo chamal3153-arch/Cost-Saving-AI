@@ -177,6 +177,12 @@ p {
   * {
     -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
   }
+
+  /* Calendly widget mobile optimization */
+  .calendly-inline-widget {
+    height: 600px !important;
+    min-height: 600px;
+  }
 }
 
 /* Touch manipulation for better mobile performance */
