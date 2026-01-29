@@ -30,14 +30,18 @@ export default function ContactForm() {
     setErrorMessage('');
 
     try {
-      // Replace with your Formspree endpoint
-      // Get it from: https://formspree.io/ (free account)
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const response = await fetch('https://formspree.io/f/xbdyonwb', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || '',
+          message: formData.message,
+        }),
       });
 
       if (response.ok) {
