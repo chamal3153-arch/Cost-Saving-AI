@@ -19,9 +19,10 @@ This guide provides the correct build settings for deploying a Next.js static ex
    - **Framework preset:** `Next.js (Static HTML Export)` or leave as "None"
    - **Build command:** `npm run build`
    - **Build output directory:** `out`
-   - **Root directory:** (leave empty)
+   - **Root directory:** (leave empty - do NOT use `/`)
    - **Node version:** `18` or higher (select from dropdown)
    - **Deploy command:** (LEAVE COMPLETELY EMPTY - do NOT type "deploy" or any other command)
+   - **Version command:** (LEAVE COMPLETELY EMPTY - do NOT use `npx wrangler versions upload`)
 
 4. **Save Changes**
    - Click **Save** or **Save and Deploy**
