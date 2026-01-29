@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['react', 'react-dom'],
   },
+  // Reduce unnecessary headers
+  poweredByHeader: false,
 };
 
 export default nextConfig;
