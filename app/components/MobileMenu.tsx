@@ -69,6 +69,13 @@ export default function MobileMenu() {
               AI Agents
             </Link>
             <Link
+              href="/ai-consulting"
+              onClick={() => setIsOpen(false)}
+              className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
+            >
+              AI Consulting
+            </Link>
+            <Link
               href="/about"
               onClick={() => setIsOpen(false)}
               className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"

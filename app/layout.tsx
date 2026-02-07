@@ -157,6 +157,12 @@ export default function RootLayout({
                     AI Agents
                   </Link>
                   <Link
+                    href="/ai-consulting"
+                    className="px-4 py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200 rounded-md hover:bg-gray-50"
+                  >
+                    AI Consulting
+                  </Link>
+                  <Link
                     href="/about"
                     className="px-4 py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200 rounded-md hover:bg-gray-50"
                   >
@@ -217,6 +223,9 @@ export default function RootLayout({
                   </Link>
                   <Link href="/agents" className="text-sm text-gray-600 hover:text-blue-600">
                     AI Agents
+                  </Link>
+                  <Link href="/ai-consulting" className="text-sm text-gray-600 hover:text-blue-600">
+                    AI Consulting
                   </Link>
                   <Link href="/about" className="text-sm text-gray-600 hover:text-blue-600">
                     About Us
