@@ -6,26 +6,15 @@ import { servicesData, ServiceData } from "../lib/servicesData";
 
 interface ServiceItemProps {
   service: ServiceData;
-  borderColor: string;
+  hoverColorClass: string;
   onClick: () => void;
 }
 
-function ServiceItem({ service, borderColor, onClick }: ServiceItemProps) {
-  const hoverClasses: Record<string, string> = {
-    "border-blue-300": "hover:border-blue-300",
-    "border-cyan-300": "hover:border-cyan-300",
-    "border-yellow-300": "hover:border-yellow-300",
-    "border-purple-300": "hover:border-purple-300",
-    "border-green-300": "hover:border-green-300",
-    "border-pink-300": "hover:border-pink-300",
-    "border-indigo-300": "hover:border-indigo-300",
-    "border-emerald-300": "hover:border-emerald-300",
-  };
-
+function ServiceItem({ service, hoverColorClass, onClick }: ServiceItemProps) {
   return (
     <button
       onClick={onClick}
-      className={`bg-white rounded-lg p-4 md:p-6 border border-gray-200 ${hoverClasses[borderColor]} hover:shadow-md transition-all cursor-pointer text-left w-full`}
+      className={`bg-white rounded-lg p-4 md:p-6 border border-gray-200 ${hoverColorClass} hover:shadow-md transition-all cursor-pointer text-left w-full`}
     >
       <p className="text-gray-700 text-sm md:text-base">{service.title}</p>
     </button>
@@ -55,7 +44,7 @@ export default function ServicesClient() {
     return acc;
   }, {} as Record<string, ServiceData[]>);
 
-  const categoryConfig: Record<string, { icon: JSX.Element; color: string; hoverColor: string }> = {
+  const categoryConfig: Record<string, { icon: JSX.Element; color: string; hoverColorClass: string }> = {
     "Intelligent Chatbots & Assistants": {
       icon: (
         <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -63,7 +52,7 @@ export default function ServicesClient() {
         </svg>
       ),
       color: "bg-blue-100",
-      hoverColor: "border-blue-300",
+      hoverColorClass: "hover:border-blue-300",
     },
     "Custom Business Dashboards": {
       icon: (
@@ -72,7 +61,7 @@ export default function ServicesClient() {
         </svg>
       ),
       color: "bg-cyan-100",
-      hoverColor: "border-cyan-300",
+      hoverColorClass: "hover:border-cyan-300",
     },
     "Workflow & Process Automation": {
       icon: (
@@ -81,7 +70,7 @@ export default function ServicesClient() {
         </svg>
       ),
       color: "bg-yellow-100",
-      hoverColor: "border-yellow-300",
+      hoverColorClass: "hover:border-yellow-300",
     },
     "Social Media & Content Systems": {
       icon: (
@@ -90,7 +79,7 @@ export default function ServicesClient() {
         </svg>
       ),
       color: "bg-purple-100",
-      hoverColor: "border-purple-300",
+      hoverColorClass: "hover:border-purple-300",
     },
     "Website & Digital Monitoring": {
       icon: (
@@ -99,7 +88,7 @@ export default function ServicesClient() {
         </svg>
       ),
       color: "bg-green-100",
-      hoverColor: "border-green-300",
+      hoverColorClass: "hover:border-green-300",
     },
     "Customer Experience Tools": {
       icon: (
@@ -108,7 +97,7 @@ export default function ServicesClient() {
         </svg>
       ),
       color: "bg-pink-100",
-      hoverColor: "border-pink-300",
+      hoverColorClass: "hover:border-pink-300",
     },
     "Internal Team Productivity": {
       icon: (
@@ -117,7 +106,7 @@ export default function ServicesClient() {
         </svg>
       ),
       color: "bg-indigo-100",
-      hoverColor: "border-indigo-300",
+      hoverColorClass: "hover:border-indigo-300",
     },
     "AI Strategy & Implementation": {
       icon: (
@@ -126,7 +115,7 @@ export default function ServicesClient() {
         </svg>
       ),
       color: "bg-emerald-100",
-      hoverColor: "border-emerald-300",
+      hoverColorClass: "hover:border-emerald-300",
     },
   };
 
@@ -151,7 +140,7 @@ export default function ServicesClient() {
                     <ServiceItem
                       key={service.id}
                       service={service}
-                      borderColor={config.hoverColor}
+                      hoverColorClass={config.hoverColorClass}
                       onClick={() => handleServiceClick(service.id)}
                     />
                   ))}
