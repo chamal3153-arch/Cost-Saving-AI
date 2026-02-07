@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { ReactNode } from "react";
 import ServiceModal from "./ServiceModal";
 import { servicesData, ServiceData } from "../lib/servicesData";
 
@@ -44,7 +45,7 @@ export default function ServicesClient() {
     return acc;
   }, {} as Record<string, ServiceData[]>);
 
-  const categoryConfig: Record<string, { icon: JSX.Element; color: string; hoverColorClass: string }> = {
+  const categoryConfig: Record<string, { icon: ReactNode; color: string; hoverColorClass: string }> = {
     "Intelligent Chatbots & Assistants": {
       icon: (
         <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
