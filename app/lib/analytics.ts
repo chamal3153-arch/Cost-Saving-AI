@@ -2,7 +2,9 @@
 // Google Analytics 4 integration with CookieYes consent management
 // Full privacy compliance: GDPR, CCPA, PIPEDA, LGPD
 
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
+// Google Analytics Measurement ID
+// You can set this via environment variable NEXT_PUBLIC_GA_ID or it will use the hardcoded value below
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-718K2EQ2VM';
 
 declare global {
   interface Window {
