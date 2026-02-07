@@ -82,7 +82,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 text-base md:text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-fit min-h-[48px] touch-manipulation"
               >
-                Get a Custom Plan
+                Get My Free Audit Now
               </a>
             </div>
           </div>
@@ -219,7 +219,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Get in Touch
+                Get My Free Audit Now
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
                 Have questions about AI automation? Want to discuss your specific needs? We're here to help.

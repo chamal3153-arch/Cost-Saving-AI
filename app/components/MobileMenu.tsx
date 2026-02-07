@@ -96,7 +96,7 @@ export default function MobileMenu() {
               onClick={() => setIsOpen(false)}
               className="mt-2 px-4 py-3 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all min-h-[44px] flex items-center justify-center"
             >
-              Get a Custom Plan
+              Get My Free Audit Now
             </a>
           </div>
         </nav>

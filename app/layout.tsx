@@ -5,6 +5,8 @@ import Image from "next/image";
 import { AnalyticsProvider } from "./components/AnalyticsProvider";
 import { CookieYesScript } from "./components/CookieYesScript";
 import { CalendlyScript } from "./components/CalendlyScript";
+import GoogleTagManager from "./components/GoogleTagManager";
+import EmailCapturePopup from "./components/EmailCapturePopup";
 import MobileMenu from "./components/MobileMenu";
 import "./globals.css";
 
@@ -106,6 +108,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
+        {/* Google Tag Manager - Load first */}
+        <GoogleTagManager />
+        
         {/* Load Calendly script early for instant loading */}
         <CalendlyScript />
         
@@ -113,6 +118,9 @@ export default function RootLayout({
         <CookieYesScript />
 
         {/* Google Analytics is now loaded conditionally via analytics.ts based on consent */}
+        
+        {/* Email Capture Popup */}
+        <EmailCapturePopup />
 
         {/* Sticky Header */}
         <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
@@ -186,7 +194,7 @@ export default function RootLayout({
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 min-h-[44px]"
                 >
-                  Get a Custom Plan
+                  Get My Free Audit Now
                 </a>
               </div>
 
