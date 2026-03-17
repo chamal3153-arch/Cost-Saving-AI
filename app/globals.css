@@ -1,0 +1,451 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Brand */
+  --brand-blue: #3b82f6;
+  --brand-cyan: #06b6d4;
+  --brand-emerald: #10b981;
+  --brand-purple: #8b5cf6;
+
+  /* Dark palette */
+  --dark-base: #050d1a;
+  --dark-section: #0d1b2e;
+  --dark-card: #0f2040;
+  --dark-border: rgba(59, 130, 246, 0.2);
+
+  /* Light palette */
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --border: #e2e8f0;
+
+  /* Text */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-light: #f1f5f9;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space-grotesk);
+  --color-background: var(--background);
+  --color-foreground: var(--text-primary);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-emerald: var(--brand-emerald);
+  --color-dark-base: var(--dark-base);
+  --color-dark-section: var(--dark-section);
+  --color-dark-card: var(--dark-card);
+}
+
+/* ============================================================
+   BASE RESETS
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  /* No color override — Tailwind utilities take full control */
+}
+
+*:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: var(--brand-blue);
+  color: white;
+}
+
+/* ============================================================
+   DARK HERO SECTION
+   ============================================================ */
+.hero-dark {
+  background: var(--dark-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow blobs */
+.hero-dark::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  animation: glowPulse 8s ease-in-out infinite alternate;
+}
+
+.hero-dark::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -5%;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.16) 0%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  animation: glowPulse 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.5; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.font-heading {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: brightness(1.08);
+}
+
+/* On dark sections — brighter, higher contrast */
+.gradient-text-blue-cyan {
+  background: linear-gradient(135deg, #7cb9fc 0%, #38e8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   CARD STYLES
+   ============================================================ */
+.card-light {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.25s ease;
+}
+
+.card-light:hover {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.15), 0 8px 30px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.card-dark {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: 16px;
+  transition: all 0.25s ease;
+}
+
+.card-dark:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.15), 0 8px 30px rgba(59, 130, 246, 0.15);
+}
+
+/* Glass card for dark sections */
+.card-glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+}
+
+.card-glass:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* ============================================================
+   BUTTON STYLES
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+  letter-spacing: -0.01em;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+  background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 27px;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--brand-blue);
+  background: transparent;
+  border-radius: 10px;
+  border: 1.5px solid var(--brand-blue);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.08);
+  transform: translateY(-1px);
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--dark-base);
+  background: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  background: #f0f9ff;
+}
+
+/* ============================================================
+   BADGE / CHIP
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+
+.badge-blue {
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.badge-cyan {
+  color: #67e8f9;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.badge-emerald {
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* ============================================================
+   STAT NUMBERS
+   ============================================================ */
+.stat-number {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* ============================================================
+   SECTION UTILITIES
+   ============================================================ */
+.section-dark {
+  background: var(--dark-base);
+}
+
+.section-dark-alt {
+  background: var(--dark-section);
+}
+
+.section-light {
+  background: white;
+}
+
+.section-surface {
+  background: var(--surface);
+}
+
+/* ============================================================
+   DIVIDER GRADIENT
+   ============================================================ */
+.divider-gradient {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Marquee for tech stack */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: flex;
+  width: fit-content;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   GRID PATTERN (hero)
+   ============================================================ */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ============================================================
+   MOBILE OPTIMIZATIONS
+   ============================================================ */
+@media (max-width: 640px) {
+  button, a, input[type="submit"] {
+    min-height: 44px;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  input, textarea, select {
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  * {
+    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+  }
+}
+
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 768px) {
+  body { font-size: 16px; line-height: 1.5; }
+  h1 { font-size: 2.25rem; line-height: 1.15; }
+  h2 { font-size: 1.875rem; line-height: 1.2; }
+  h3 { font-size: 1.5rem; line-height: 1.3; }
+}
+
+/* ============================================================
+   ROI CALCULATOR RANGE SLIDER
+   ============================================================ */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  cursor: pointer;
+  border: 2px solid #3b82f6;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  cursor: pointer;
+  border: 2px solid #3b82f6;
+}
+
+/* ============================================================
+   SCROLLBAR (optional polish)
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--brand-blue), var(--brand-cyan));
+  border-radius: 3px;
+}
