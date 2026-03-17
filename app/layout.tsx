@@ -177,7 +177,7 @@ export default function RootLayout({
                     </Link>
                   ))}
                   <Link
-                    href="/audit-quiz"
+                    href="/#roi-calculator"
                     className="ml-1 px-3 py-1.5 text-xs font-bold text-blue-300 border border-blue-500/40 rounded-full hover:bg-blue-500/15 hover:border-blue-400 hover:text-white transition-all duration-200 flex items-center gap-1"
                     style={{ fontFamily: "var(--font-space-grotesk)" }}
                   >

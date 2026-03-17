@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import HowItWorks from "./components/HowItWorks";
 import TechStack from "./components/TechStack";
 import FAQSection from "./components/FAQSection";
-import ROICalculator from "./components/ROICalculator";
+import AuditQuiz from "./components/AuditQuiz";
 
 export const metadata: Metadata = {
   title: "Cost Saver AI – AI Automation That Saves SMBs 70-90% on Manual Costs",
@@ -229,7 +229,7 @@ export default function Home() {
                 Get My Free Audit →
               </a>
               <Link
-                href="/audit-quiz"
+                href="/#roi-calculator"
                 className="btn-secondary text-base px-8 py-4 touch-manipulation border-blue-500/40 text-blue-300 hover:text-white hover:border-blue-400 hover:bg-blue-500/10"
               >
                 ⚡ Calculate My ROI — Free
@@ -261,9 +261,27 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════
-          ROI CALCULATOR  ← moved to position #2
+          ROI CALCULATOR — full embedded
       ════════════════════════════════════════ */}
-      <ROICalculator />
+      <section id="roi-calculator" className="bg-[#050d1a] py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-600/6 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-cyan-600/5 blur-[100px] pointer-events-none" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <div className="badge badge-blue mx-auto mb-5">
+              <span>💰</span> Free ROI Calculator
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-heading mb-4" style={{ letterSpacing: '-0.02em' }}>
+              See Exactly How Much{' '}
+              <span className="gradient-text-blue-cyan">You&apos;re Losing</span>
+            </h2>
+            <p className="text-slate-400 text-lg">
+              Fill in your numbers — get a real breakdown of waste, savings, ROI %, and payback period. Takes 2 minutes.
+            </p>
+          </div>
+          <AuditQuiz />
+        </div>
+      </section>
 
       {/* ════════════════════════════════════════
           STATS BAR
@@ -531,7 +549,7 @@ export default function Home() {
                 Book My Free Audit Now →
               </a>
               <Link
-                href="/audit-quiz"
+                href="/#roi-calculator"
                 className="btn-secondary text-base px-8 py-4 border-blue-500/30 text-blue-300 hover:text-white hover:border-blue-400 hover:bg-blue-500/10 touch-manipulation"
               >
                 ⚡ Get ROI Estimate First
