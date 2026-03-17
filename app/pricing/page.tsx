@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Pricing – Transparent Project-Based AI Automation Pricing",
   description:
     "No retainers. No surprises. Cost Saver AI charges per project — from simple $400 automations to full $10,000 AI overhauls. See what's included and book a free audit.",
+    alternates: {
+    canonical: 'https://costsaverai.com/pricing',
+  },
   openGraph: {
     title: "Pricing – Cost Saver AI",
     description:

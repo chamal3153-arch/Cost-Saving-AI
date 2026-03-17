@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "automation quote",
     "AI workflow consultation",
   ],
+    alternates: {
+    canonical: 'https://costsaverai.com/contact',
+  },
   openGraph: {
     title: "Contact Cost Saver AI – Get Your Free Audit",
     description:

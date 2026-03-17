@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'Free Automation Audit Quiz – Find Your ROI in 2 Minutes',
   description:
     'Answer 5 quick questions and get a personalised estimate of how much you could save by automating your biggest manual process. Free, instant results.',
+    alternates: {
+    canonical: 'https://costsaverai.com/audit-quiz',
+  },
   openGraph: {
     title: 'Free Automation Audit Quiz – Cost Saver AI',
     description:

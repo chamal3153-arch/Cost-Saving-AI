@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Case Studies – Real AI Automation Results for SMBs",
   description:
     "See how Cost Saver AI helped real businesses automate manual work, reduce costs, and scale. Detailed breakdowns of what was built, how long it took, and the ROI delivered.",
+    alternates: {
+    canonical: 'https://costsaverai.com/case-studies',
+  },
   openGraph: {
     title: "Case Studies – Cost Saver AI",
     description:

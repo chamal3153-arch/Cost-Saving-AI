@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: 'AI Automation Newsletter – Weekly Insights for SMB Owners',
   description:
     'Get a weekly roundup of AI tools, automation case studies, and cost-saving tactics delivered straight to your inbox. Free, practical, no fluff.',
+    alternates: {
+    canonical: 'https://costsaverai.com/newsletter',
+  },
   openGraph: {
     title: 'AI Automation Newsletter – Cost Saver AI',
     description:

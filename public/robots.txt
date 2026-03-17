@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Block AI Crawlers
+# Block AI training crawlers (not Google search bot)
 User-agent: GPTBot
 Disallow: /
 
@@ -17,9 +17,6 @@ Disallow: /
 User-agent: Claude-Web
 Disallow: /
 
-User-agent: Google-Extended
-Disallow: /
-
 User-agent: PerplexityBot
 Disallow: /
 
@@ -32,4 +29,4 @@ Disallow: /
 User-agent: Applebot-Extended
 Disallow: /
 
-Sitemap: https://tekonai.com/sitemap.xml
+Sitemap: https://costsaverai.com/sitemap.xml

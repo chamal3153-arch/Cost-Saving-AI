@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Cost Saver AI – AI Automation That Saves SMBs 70-90% on Manual Costs",
   description:
     "Replace expensive manual work with done-for-you AI automation systems. Custom bots, dashboards, and integrations built in 2-3 weeks. You own it. No monthly fees.",
+    alternates: {
+    canonical: 'https://costsaverai.com',
+  },
   openGraph: {
     title: "Cost Saver AI – AI Automation That Saves SMBs 70-90% on Manual Costs",
     description:

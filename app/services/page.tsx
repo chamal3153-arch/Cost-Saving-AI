@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     "AI agents",
     "business intelligence",
   ],
+    alternates: {
+    canonical: 'https://costsaverai.com/services',
+  },
   openGraph: {
     title: "AI Solutions for Small & Medium Businesses - Cost Saver AI",
     description:

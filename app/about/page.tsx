@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "business automation experts",
     "SMB automation specialists",
   ],
+    alternates: {
+    canonical: 'https://costsaverai.com/about',
+  },
   openGraph: {
     title: "About Cost Saver AI – Meet Our Team",
     description:

@@ -32,18 +32,23 @@ export const metadata: Metadata = {
   description:
     "Cost Saver AI builds done-for-you AI automation systems for small and mid-sized businesses. Replace manual workflows with custom bots, dashboards, and integrations. Deploy in 2-3 weeks, own it outright.",
   keywords: [
-    "AI automation for small business",
-    "business process automation",
-    "SMB AI automation",
-    "workflow automation",
-    "custom AI dashboards",
-    "AI consulting for business",
-    "replace manual work with AI",
-    "affordable AI automation",
-    "AI systems for SMBs",
-    "automate business processes",
-    "save money with AI",
-    "AI implementation services",
+    'AI automation for small business',
+    'business process automation',
+    'SMB AI automation',
+    'workflow automation services',
+    'custom AI dashboards',
+    'AI automation Australia',
+    'AI automation UK',
+    'automate business processes',
+    'invoice processing automation',
+    'AI chatbot for small business',
+    'done for you AI automation',
+    'zapier automation services',
+    'xero automation',
+    'AI document processing',
+    'save money with AI',
+    'no code automation agency',
+    'affordable AI automation services',
   ],
   authors: [{ name: "Cost Saver AI" }],
   creator: "Cost Saver AI",
@@ -96,7 +101,25 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="canonical" href="https://costsaverai.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ProfessionalService',
+              'name': 'Cost Saver AI',
+              'description': 'Done-for-you AI automation systems for small and mid-sized businesses. Custom chatbots, workflow automation, dashboards, and document processing. Fixed-price projects from $400.',
+              'url': 'https://costsaverai.com',
+              'logo': 'https://costsaverai.com/Company%20logo.png',
+              'email': 'costsaverai@proton.me',
+              'foundingDate': '2024',
+              'areaServed': ['AU', 'NZ', 'GB', 'US', 'SG'],
+              'priceRange': '$400-$10000',
+              'address': { '@type': 'PostalAddress', 'addressCountry': 'AU' },
+              'contactPoint': { '@type': 'ContactPoint', 'contactType': 'Customer Service', 'email': 'costsaverai@proton.me' }
+            })
+          }}
+        />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
