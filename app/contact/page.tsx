@@ -92,11 +92,7 @@ export default function Contact() {
                 where automation creates the most value for your business.
               </p>
               <div className="w-full overflow-hidden rounded-xl">
-                <CalendlyWidget
-                  url="https://calendly.com/chamal-3153/30min"
-                  minWidth="100%"
-                  height="680px"
-                />
+                <CalendlyWidget url="https://calendly.com/chamal-3153/30min" />
               </div>
             </div>
 

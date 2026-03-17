@@ -166,6 +166,7 @@ export default function RootLayout({
                     { href: "/case-studies", label: "Case Studies" },
                     { href: "/about", label: "About" },
                     { href: "/contact", label: "Contact" },
+                    { href: "/faq", label: "FAQ" },
                   ].map(({ href, label }) => (
                     <Link
                       key={href}

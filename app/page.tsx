@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import HowItWorks from "./components/HowItWorks";
 import TechStack from "./components/TechStack";
-import FAQSection from "./components/FAQSection";
 import AuditQuiz from "./components/AuditQuiz";
 
 export const metadata: Metadata = {
@@ -506,11 +505,6 @@ export default function Home() {
           TECH STACK
       ════════════════════════════════════════ */}
       <TechStack />
-
-      {/* ════════════════════════════════════════
-          FAQ
-      ════════════════════════════════════════ */}
-      <FAQSection />
 
       {/* ════════════════════════════════════════
           FINAL CTA
