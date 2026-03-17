@@ -73,32 +73,25 @@ const BOT_RESPONSES: Record<string, { text: string; quickReplies?: QuickReply[] 
     text: "Great choice! 🎯 A free 30-minute audit is the best first step — we'll map your workflows, find the highest-ROI automation, and send you a fixed quote.\n\nClick below to book directly in Chamal's calendar:",
     quickReplies: [
       { label: '📅 Open Calendly →', value: 'open_calendly' },
-      { label: '📧 Email us instead', value: 'email' },
+      { label: '📧 Send us a message', value: 'open_email' },
     ],
   },
   email: {
-    text: "You can email us anytime at **costsaverai@proton.me** — we reply within one business day.\n\nOr click below and I'll open a pre-filled email for you:",
-    quickReplies: [
-      { label: '📧 Open email →', value: 'open_email' },
-      { label: '📅 Book a call instead', value: 'book' },
-    ],
+    text: "Happy to help! Fill in the form below and we'll get back to you within one business day 👇",
+    quickReplies: [],
   },
   fallback: {
-    text: "Good question — that's best answered by Chamal directly 👋 \n\nI'll open a pre-filled email so you can ask exactly that. Takes 30 seconds.",
-    quickReplies: [
-      { label: '📧 Send question →', value: 'open_email_question' },
-      { label: '📅 Book a call instead', value: 'book' },
-    ],
+    text: "Good question — that's best answered by Chamal directly 👋\n\nSend us a message below and we'll reply within one business day:",
+    quickReplies: [],
   },
   pricing_page: { text: '' },
   services_page: { text: '' },
   case_studies_page: { text: '' },
   open_calendly: { text: '' },
   open_email: { text: '' },
-  open_email_question: { text: '' },
 };
 
-// Simple keyword intent matching
+// Keyword intent matching
 function detectIntent(input: string): string {
   const t = input.toLowerCase();
   if (/price|cost|how much|fee|charge|expensive|afford|budget|\$/.test(t)) return 'pricing';
@@ -121,6 +114,82 @@ function parseMarkdown(text: string): string {
 
 const TYPING_DELAY = 900;
 
+// ── Inline contact form rendered inside the chat ──────────────────────────────
+function InlineContactForm({ prefillMessage }: { prefillMessage?: string }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState(prefillMessage || '');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !message) return;
+    setStatus('sending');
+    try {
+      const res = await fetch('https://formspree.io/f/xbdyonwb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: name || 'Website chat visitor',
+          email,
+          message: `[Via Aria chatbot]\n\n${message}`,
+          source: 'Aria chatbot',
+        }),
+      });
+      setStatus(res.ok ? 'sent' : 'error');
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  if (status === 'sent') {
+    return (
+      <div className="bg-emerald-500/10 border border-emerald-500/25 rounded-xl p-4 text-center">
+        <p className="text-emerald-400 font-semibold text-sm mb-1">Message sent! ✅</p>
+        <p className="text-slate-400 text-xs">We'll reply to {email} within one business day.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-[#0d1b2e] border border-white/8 rounded-xl p-4 space-y-3">
+      <input
+        type="text"
+        placeholder="Your name (optional)"
+        value={name}
+        onChange={e => setName(e.target.value)}
+        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm placeholder-slate-600 outline-none focus:border-blue-500/40 transition-colors"
+      />
+      <input
+        type="email"
+        placeholder="Your email *"
+        required
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm placeholder-slate-600 outline-none focus:border-blue-500/40 transition-colors"
+      />
+      <textarea
+        placeholder="Your message *"
+        required
+        rows={3}
+        value={message}
+        onChange={e => setMessage(e.target.value)}
+        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm placeholder-slate-600 outline-none focus:border-blue-500/40 transition-colors resize-none"
+      />
+      {status === 'error' && (
+        <p className="text-red-400 text-xs">Something went wrong — try emailing costsaverai@proton.me directly.</p>
+      )}
+      <button
+        type="submit"
+        disabled={status === 'sending' || !email || !message}
+        className="w-full py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-semibold hover:from-blue-500 hover:to-cyan-500 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        {status === 'sending' ? 'Sending…' : 'Send Message →'}
+      </button>
+    </form>
+  );
+}
+
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -129,42 +198,44 @@ export default function ChatBot() {
   const [hasOpened, setHasOpened] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
   const [userQuestion, setUserQuestion] = useState('');
+  const [showFormAfterMsgId, setShowFormAfterMsgId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Show attention bubble after 8 seconds
   useEffect(() => {
     const t = setTimeout(() => setShowBubble(true), 8000);
     return () => clearTimeout(t);
   }, []);
 
-  // Auto-scroll to latest message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
-  // Focus input when chat opens
   useEffect(() => {
     if (isOpen) inputRef.current?.focus();
   }, [isOpen]);
 
-  const addBotMessage = useCallback((text: string, quickReplies?: QuickReply[]) => {
+  const addBotMessage = useCallback((text: string, quickReplies?: QuickReply[], showForm?: boolean) => {
     setIsTyping(true);
     setTimeout(() => {
       setIsTyping(false);
+      const msgId = Date.now().toString();
       setMessages(prev => [...prev, {
-        id: Date.now().toString(),
+        id: msgId,
         role: 'bot',
         text,
         timestamp: new Date(),
       }]);
       if (quickReplies?.length) {
         setMessages(prev => [...prev, {
-          id: Date.now().toString() + '_qr',
+          id: msgId + '_qr',
           role: 'bot',
           text: `__quickreplies__${JSON.stringify(quickReplies)}`,
           timestamp: new Date(),
         }]);
+      }
+      if (showForm) {
+        setShowFormAfterMsgId(msgId);
       }
     }, TYPING_DELAY);
   }, []);
@@ -180,37 +251,26 @@ export default function ChatBot() {
   };
 
   const handleQuickReply = (value: string) => {
-    // Handle special navigation actions
     if (value === 'open_calendly') {
       window.open('https://calendly.com/chamal-3153/30min', '_blank');
       return;
     }
     if (value === 'open_email') {
-      window.location.href = 'mailto:costsaverai@proton.me?subject=Enquiry%20from%20website';
+      addBotMessage(
+        "Fill in your details below and we'll get back to you within one business day 👇",
+        [],
+        true
+      );
       return;
     }
-    if (value === 'open_email_question') {
-      const subject = encodeURIComponent('Question from website chat');
-      const body = encodeURIComponent(userQuestion ? `My question: ${userQuestion}\n\n` : '');
-      window.location.href = `mailto:costsaverai@proton.me?subject=${subject}&body=${body}`;
-      return;
-    }
-    if (value === 'pricing_page') {
-      window.location.href = '/pricing';
-      return;
-    }
-    if (value === 'services_page') {
-      window.location.href = '/services';
-      return;
-    }
-    if (value === 'case_studies_page') {
-      window.location.href = '/case-studies';
-      return;
-    }
+    if (value === 'pricing_page') { window.location.href = '/pricing'; return; }
+    if (value === 'services_page') { window.location.href = '/services'; return; }
+    if (value === 'case_studies_page') { window.location.href = '/case-studies'; return; }
 
     const response = BOT_RESPONSES[value] || BOT_RESPONSES.fallback;
     if (response.text) {
-      addBotMessage(response.text, response.quickReplies);
+      const showForm = value === 'email' || value === 'fallback';
+      addBotMessage(response.text, response.quickReplies, showForm);
     }
   };
 
@@ -221,7 +281,6 @@ export default function ChatBot() {
     setUserQuestion(text);
     setInputValue('');
 
-    // Add user message
     setMessages(prev => [...prev, {
       id: Date.now().toString(),
       role: 'user',
@@ -229,23 +288,10 @@ export default function ChatBot() {
       timestamp: new Date(),
     }]);
 
-    // Detect intent and respond
     const intent = detectIntent(text);
     const response = BOT_RESPONSES[intent] || BOT_RESPONSES.fallback;
-
-    // For fallback, include question in email
-    if (intent === 'fallback') {
-      const r = {
-        ...BOT_RESPONSES.fallback,
-        quickReplies: [
-          { label: '📧 Send my question →', value: 'open_email_question' },
-          { label: '📅 Book a call instead', value: 'book' },
-        ],
-      };
-      addBotMessage(r.text, r.quickReplies);
-    } else {
-      addBotMessage(response.text, response.quickReplies);
-    }
+    const showForm = intent === 'fallback' || intent === 'email';
+    addBotMessage(response.text, response.quickReplies, showForm);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -263,9 +309,10 @@ export default function ChatBot() {
           className="fixed bottom-24 right-4 sm:right-6 z-[90] w-[calc(100vw-2rem)] sm:w-[380px] flex flex-col"
           style={{ maxHeight: 'calc(100vh - 140px)' }}
         >
-          <div className="flex flex-col h-full bg-[#050d1a] border border-blue-500/20 rounded-2xl shadow-2xl overflow-hidden"
-            style={{ boxShadow: '0 0 0 1px rgba(59,130,246,0.1), 0 25px 50px rgba(0,0,0,0.6)' }}>
-
+          <div
+            className="flex flex-col h-full bg-[#050d1a] border border-blue-500/20 rounded-2xl shadow-2xl overflow-hidden"
+            style={{ boxShadow: '0 0 0 1px rgba(59,130,246,0.1), 0 25px 50px rgba(0,0,0,0.6)' }}
+          >
             {/* Header */}
             <div className="flex items-center gap-3 px-4 py-3.5 bg-gradient-to-r from-[#0a1628] to-[#0d1b2e] border-b border-blue-500/15 flex-shrink-0">
               <div className="relative">
@@ -290,7 +337,7 @@ export default function ChatBot() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 min-h-[280px] max-h-[380px]">
+            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 min-h-[280px] max-h-[420px]">
               {messages.map((msg) => {
                 if (msg.role === 'bot' && msg.text.startsWith('__quickreplies__')) {
                   const qrs: QuickReply[] = JSON.parse(msg.text.replace('__quickreplies__', ''));
@@ -311,16 +358,24 @@ export default function ChatBot() {
 
                 if (msg.role === 'bot') {
                   return (
-                    <div key={msg.id} className="flex items-end gap-2">
-                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mb-0.5">
-                        A
+                    <div key={msg.id}>
+                      <div className="flex items-end gap-2">
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mb-0.5">
+                          A
+                        </div>
+                        <div className="bg-[#0d1b2e] border border-white/8 rounded-2xl rounded-bl-sm px-4 py-2.5 max-w-[80%]">
+                          <p
+                            className="text-slate-300 text-sm leading-relaxed"
+                            dangerouslySetInnerHTML={{ __html: parseMarkdown(msg.text) }}
+                          />
+                        </div>
                       </div>
-                      <div className="bg-[#0d1b2e] border border-white/8 rounded-2xl rounded-bl-sm px-4 py-2.5 max-w-[80%]">
-                        <p
-                          className="text-slate-300 text-sm leading-relaxed"
-                          dangerouslySetInnerHTML={{ __html: parseMarkdown(msg.text) }}
-                        />
-                      </div>
+                      {/* Inline form rendered directly after the triggering message */}
+                      {showFormAfterMsgId === msg.id && (
+                        <div className="mt-3 ml-8">
+                          <InlineContactForm prefillMessage={userQuestion} />
+                        </div>
+                      )}
                     </div>
                   );
                 }
@@ -417,7 +472,6 @@ export default function ChatBot() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
           </svg>
         )}
-        {/* Pulse ring */}
         {!isOpen && !hasOpened && (
           <span className="absolute inset-0 rounded-full animate-ping opacity-30 bg-blue-400" />
         )}
