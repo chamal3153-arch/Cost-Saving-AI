@@ -8,6 +8,7 @@ import { CalendlyScript } from "./components/CalendlyScript";
 import GoogleTagManager from "./components/GoogleTagManager";
 import EmailCapturePopup from "./components/EmailCapturePopup";
 import MobileMenu from "./components/MobileMenu";
+import ChatBot from "./components/ChatBot";
 import "./globals.css";
 
 const inter = Inter({
@@ -291,6 +292,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        <ChatBot />
       </body>
     </html>
   );

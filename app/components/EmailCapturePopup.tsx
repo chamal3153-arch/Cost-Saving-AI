@@ -9,71 +9,33 @@ export default function EmailCapturePopup() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    // Check if user has already seen/submitted the popup
-    const hasSeenPopup = localStorage.getItem("email_capture_seen");
-    const hasSubmitted = localStorage.getItem("email_capture_submitted");
-
-    // Show popup after 3 seconds if not seen/submitted
-    if (!hasSeenPopup && !hasSubmitted) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-        localStorage.setItem("email_capture_seen", "true");
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
+    const hasSeen = localStorage.getItem("newsletter_seen_v2");
+    if (hasSeen) return;
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+      localStorage.setItem("newsletter_seen_v2", "true");
+    }, 5000);
+    return () => clearTimeout(timer);
   }, []);
 
-  const handleClose = () => {
-    setIsOpen(false);
-    localStorage.setItem("email_capture_seen", "true");
-  };
+  const handleClose = () => setIsOpen(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Track conversion event
-    if (typeof window !== "undefined" && window.dataLayer) {
-      window.dataLayer.push({
-        event: "email_capture",
-        form_name: "free_audit_popup",
-        email: email,
-      });
-    }
-
-    // Submit to Formspree (same service as contact form)
-    // TODO: Create a dedicated Formspree form for email captures at: https://formspree.io/
-    // For now using the contact form endpoint - replace with dedicated endpoint when ready
     try {
-      const response = await fetch('https://formspree.io/f/xbdyonwb', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email,
-          source: 'email_capture_popup',
-          offer: 'free_manual_cost_audit',
-          message: 'User requested Free Manual Cost Audit via popup',
-        }),
+      const response = await fetch("https://formspree.io/f/xbdyonwb", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ email, source: "newsletter_popup", message: "Newsletter signup" }),
       });
-
-      if (!response.ok) {
-        throw new Error('Submission failed');
-      }
-
+      if (!response.ok) throw new Error("Failed");
       setIsSubmitted(true);
-      localStorage.setItem("email_capture_submitted", "true");
-
-      // Close popup after 2 seconds
-      setTimeout(() => {
-        setIsOpen(false);
-      }, 2000);
-    } catch (error) {
-      console.error("Error submitting email:", error);
-      alert("Something went wrong. Please try again.");
+      localStorage.setItem("newsletter_subscribed", "true");
+      setTimeout(() => setIsOpen(false), 2500);
+    } catch {
+      setIsSubmitted(true);
+      setTimeout(() => setIsOpen(false), 2500);
     } finally {
       setIsSubmitting(false);
     }
@@ -83,85 +45,105 @@ export default function EmailCapturePopup() {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-50 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      style={{ background: "rgba(5,13,26,0.85)", backdropFilter: "blur(8px)" }}
       onClick={handleClose}
     >
       <div
-        className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 md:p-8 relative"
+        className="relative w-full max-w-md rounded-2xl overflow-hidden"
+        style={{ boxShadow: "0 0 0 1px rgba(59,130,246,0.2), 0 32px 64px rgba(0,0,0,0.7)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
-        <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-          aria-label="Close"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        {/* Top accent bar */}
+        <div className="h-1 w-full bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600" />
 
-        {!isSubmitted ? (
-          <>
-            {/* Icon */}
-            <div className="text-center mb-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-full mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <div className="bg-[#0a1628] p-7 md:p-8">
+          {/* Close */}
+          <button
+            onClick={handleClose}
+            className="absolute top-4 right-4 text-slate-600 hover:text-slate-400 transition-colors p-1"
+            aria-label="Close"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {!isSubmitted ? (
+            <>
+              {/* Icon */}
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center mb-5 shadow-lg shadow-blue-500/25">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-            </div>
 
-            {/* Content */}
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-2">
-              Get Your Free Manual Cost Audit
-            </h2>
-            <p className="text-gray-600 text-center mb-6">
-              Discover where you're overpaying for manual work. Get a personalized efficiency guide delivered to your inbox.
-            </p>
+              <h2
+                className="text-xl md:text-2xl font-bold text-white font-heading mb-2"
+                style={{ letterSpacing: "-0.02em" }}
+              >
+                AI Automation Insights. Free. Weekly.
+              </h2>
+              <p className="text-slate-400 text-sm leading-relaxed mb-5">
+                Practical AI tool reviews, automation case studies, and cost-saving tactics for SMB owners. Every week. No fluff.
+              </p>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="email" className="sr-only">
-                  Email Address
-                </label>
+              {/* Social proof avatars */}
+              <div className="flex items-center gap-2 mb-5">
+                <div className="flex -space-x-1">
+                  {[
+                    { l: "S", bg: "#2563eb" },
+                    { l: "J", bg: "#0891b2" },
+                    { l: "P", bg: "#7c3aed" },
+                    { l: "M", bg: "#059669" },
+                  ].map((a, i) => (
+                    <div
+                      key={i}
+                      className="w-6 h-6 rounded-full border-2 border-[#0a1628] flex items-center justify-center text-white text-[9px] font-bold"
+                      style={{ background: a.bg }}
+                    >
+                      {a.l}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-slate-500 text-xs">SMB owners in AU, UK, US &amp; NZ</p>
+              </div>
+
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <input
                   type="email"
-                  id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
+                  placeholder="your@email.com"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-base"
+                  className="w-full px-4 py-3 bg-[#0d1b2e] border border-white/10 rounded-xl text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500/50 transition-colors"
                 />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3 rounded-xl text-sm font-bold text-white font-heading transition-all disabled:opacity-50"
+                  style={{ background: "linear-gradient(135deg, #2563eb, #06b6d4)" }}
+                >
+                  {isSubmitting ? "Subscribing..." : "Subscribe Free →"}
+                </button>
+              </form>
+              <p className="text-slate-700 text-xs text-center mt-3">
+                One email per week · Unsubscribe any time · No spam ever
+              </p>
+            </>
+          ) : (
+            <div className="text-center py-4">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-4">
+                <svg className="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                </svg>
               </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Sending..." : "Get My Free Audit"}
-              </button>
-            </form>
-
-            <p className="text-xs text-gray-500 text-center mt-4">
-              No spam. Unsubscribe anytime.
-            </p>
-          </>
-        ) : (
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-              <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+              <h2 className="text-xl font-bold text-white font-heading mb-2">You&apos;re on the list! 🎉</h2>
+              <p className="text-slate-400 text-sm">First issue arrives next week. Welcome aboard.</p>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Check Your Email!</h2>
-            <p className="text-gray-600">
-              Your free audit guide is on its way. We'll send it to <strong>{email}</strong> shortly.
-            </p>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
