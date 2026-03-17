@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import ContactForm from "../components/ContactForm";
 import CalendlyWidget from "../components/CalendlyWidget";
 
 export const metadata: Metadata = {
-  title: "Contact Us - Get a Custom AI Automation Proposal",
+  title: "Contact Us – Book a Free Automation Audit | Cost Saver AI",
   description:
-    "Book a free 30-minute discovery call to discuss your AI automation needs. Get a custom proposal tailored to your business workflows and goals. No templates, no surprises.",
+    "Book a free 30-minute discovery call or send us a message. We'll scope your project, calculate your ROI, and send a fixed quote — no obligation.",
   keywords: [
     "AI automation consultation",
-    "free consultation",
-    "custom AI proposal",
-    "automation strategy call",
+    "free audit call",
+    "automation quote",
+    "AI workflow consultation",
   ],
   openGraph: {
-    title: "Contact Cost Saver AI - Get Your Custom Proposal",
+    title: "Contact Cost Saver AI – Get Your Free Audit",
     description:
       "Book a free discovery call and get a custom AI automation proposal for your business.",
     type: "website",
@@ -23,94 +22,135 @@ export const metadata: Metadata = {
 
 export default function Contact() {
   return (
-    <section className="bg-gradient-to-b from-white to-gray-50 py-12 md:py-20 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Page Header */}
-          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-              Get a Custom Proposal for Your AI Agents
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-4 sm:mb-6 px-4 sm:px-0">
-              Every business is unique. After understanding your specific workflows and goals on a strategy call,
-              we provide a detailed, scoped proposal with a clear investment. No templates, no surprises.
-            </p>
-            <a
-              href="#contact-form"
-              className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 min-h-[48px] touch-manipulation"
+    <>
+      {/* Hero */}
+      <section className="hero-dark grid-pattern py-14 md:py-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-600/8 blur-[120px] pointer-events-none" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="badge badge-blue mx-auto mb-5">
+              <span>📞</span> Free Discovery Call
+            </div>
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-heading mb-4"
+              style={{ letterSpacing: "-0.03em" }}
             >
-              Open Contact Form
-            </a>
+              Let&apos;s Scope Your{" "}
+              <span className="gradient-text-blue-cyan">Automation Project</span>
+            </h1>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+              Every business is different. On a free 30-minute call we map your workflows, identify
+              the highest-ROI automation, and send you a fixed quote — no templates, no surprises.
+            </p>
           </div>
+        </div>
+      </section>
 
-          {/* Two-Column Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 max-w-5xl mx-auto">
-            {/* LEFT COLUMN (Context) */}
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 md:p-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Get a Custom Proposal for Your AI Agents
+      {/* 3-step process strip */}
+      <section className="bg-[#0d1b2e] border-y border-white/6 py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-0 max-w-3xl mx-auto">
+            {[
+              { step: "01", label: "Book a 30-min call", icon: "📅" },
+              { step: "02", label: "We send a fixed quote", icon: "📋" },
+              { step: "03", label: "We build your system", icon: "🚀" },
+            ].map((item, i) => (
+              <div key={item.step} className="flex items-center gap-0">
+                <div className="flex items-center gap-3 px-6 py-3 text-center sm:text-left">
+                  <span className="text-xl">{item.icon}</span>
+                  <div>
+                    <p className="text-slate-600 text-xs font-mono">{item.step}</p>
+                    <p className="text-slate-300 text-sm font-semibold font-heading">{item.label}</p>
+                  </div>
+                </div>
+                {i < 2 && (
+                  <svg className="w-4 h-4 text-slate-700 flex-shrink-0 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Main content */}
+      <section className="bg-[#050d1a] py-14 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 max-w-5xl mx-auto">
+
+            {/* LEFT — Calendly */}
+            <div className="bg-[#0a1628] border border-blue-500/15 rounded-2xl p-6 md:p-8">
+              <h2 className="text-xl font-bold text-white font-heading mb-2">
+                Book Your Free Discovery Call
               </h2>
-              <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-                Every business is unique. After understanding your specific workflows and goals on a strategy call,
-                we provide a detailed, scoped proposal with a clear investment. No templates, no surprises.
+              <p className="text-slate-400 text-sm mb-5">
+                30 minutes. We&apos;ll walk through your workflows, answer questions, and outline exactly
+                where automation creates the most value for your business.
               </p>
-              <ul className="space-y-3 text-gray-700 text-sm md:text-base">
-                <li>
-                  <span className="font-semibold">Step 1:</span> Book a 30-minute discovery call.
-                </li>
-                <li>
-                  <span className="font-semibold">Step 2:</span> We analyze your current workflows and present a custom
-                  plan.
-                </li>
-                <li>
-                  <span className="font-semibold">Step 3:</span> You approve, and we begin building your agents.
-                </li>
-              </ul>
+              <div className="w-full overflow-hidden rounded-xl">
+                <CalendlyWidget
+                  url="https://calendly.com/chamal-3153/30min"
+                  minWidth="100%"
+                  height="680px"
+                />
+              </div>
             </div>
 
-            {/* RIGHT COLUMN (Action) */}
+            {/* RIGHT — form + info */}
             <div className="space-y-6">
-              {/* Calendly Booking */}
-              <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 md:p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Book Your Free Discovery Call</h2>
-                <p className="text-gray-700 mb-4">
-                  Schedule your free 30-minute discovery call. We&apos;ll walk through your ideas, answer questions, and
-                  outline where AI agents can create the most value.
-                </p>
-                {/* Calendly widget - optimized loading */}
-                <div className="w-full overflow-hidden">
-                  <CalendlyWidget 
-                    url="https://calendly.com/chamal-3153/30min"
-                    minWidth="100%"
-                    height="700px"
-                  />
-                </div>
-              </div>
 
-              {/* Contact Form */}
-              <div id="contact-form" className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 md:p-8 scroll-mt-20">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Send Us a Message</h2>
-                <p className="text-gray-700 mb-6">
-                  Have questions or want to share details about your project? Fill out the form below and we&apos;ll get back to you within one business day.
+              {/* Send a message */}
+              <div id="contact-form" className="bg-[#0a1628] border border-blue-500/15 rounded-2xl p-6 md:p-8 scroll-mt-20">
+                <h2 className="text-xl font-bold text-white font-heading mb-2">
+                  Send Us a Message
+                </h2>
+                <p className="text-slate-400 text-sm mb-6">
+                  Prefer to write first? Tell us about your project and we&apos;ll reply within one business day with initial thoughts and next steps.
                 </p>
                 <ContactForm />
               </div>
 
-              {/* Email Contact */}
-              <div className="bg-white rounded-xl shadow-md border border-gray-200 p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Have general questions?</h3>
-                <p className="text-gray-700 mb-1">
-                  Email us any time and we&apos;ll get back to you within one business day:
-                </p>
-                <a
-                  href="mailto:costsaverai@proton.me"
-                  className="text-blue-600 font-semibold hover:text-blue-700 break-all"
-                >
-                  costsaverai@proton.me
-                </a>
+              {/* Direct email */}
+              <div className="bg-[#0a1628] border border-white/6 rounded-xl p-5">
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-slate-300 text-sm font-semibold mb-0.5">Email us directly</p>
+                    <a
+                      href="mailto:costsaverai@proton.me"
+                      className="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium"
+                    >
+                      costsaverai@proton.me
+                    </a>
+                    <p className="text-slate-600 text-xs mt-1">Replies within 1 business day</p>
+                  </div>
+                </div>
               </div>
+
+              {/* Location */}
+              <div className="bg-[#0a1628] border border-white/6 rounded-xl p-5">
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-slate-300 text-sm font-semibold mb-0.5">Based in Australia</p>
+                    <p className="text-slate-500 text-sm">Serving clients globally — AU · NZ · UK · US · SG</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </section>
+    </>
   );
 }

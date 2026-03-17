@@ -147,6 +147,12 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 md:py-24">
           <div className="max-w-4xl">
 
+            {/* Urgency pill */}
+            <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/25 rounded-full px-4 py-1.5 text-xs font-semibold text-emerald-400 mb-5 font-heading">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Now Accepting New Clients — Limited Spots Available
+            </div>
+
             {/* Badge */}
             <div className="badge badge-blue mb-7 animate-fade-up">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
@@ -164,9 +170,14 @@ export default function Home() {
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg md:text-xl text-slate-400 mb-8 max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-400 mb-3 max-w-2xl leading-relaxed">
               We build done-for-you AI automation systems that replace expensive manual work.
               Deploy in 2–3 weeks. Own it outright. No monthly fees.
+            </p>
+
+            {/* Price anchor */}
+            <p className="text-sm text-slate-500 mb-8">
+              Projects from <span className="text-white font-semibold">$400</span> · Fixed quote upfront · You own the system outright
             </p>
 
             {/* CTAs */}
@@ -180,16 +191,16 @@ export default function Home() {
                 Get My Free Audit →
               </a>
               <Link
-                href="/services"
+                href="/audit-quiz"
                 className="btn-secondary text-base px-8 py-4 touch-manipulation border-slate-600 text-slate-300 hover:text-white hover:border-slate-400 hover:bg-white/5"
               >
-                See All Services
+                ⚡ Take the Free ROI Quiz
               </Link>
             </div>
 
             {/* Trust micro-copy */}
             <div className="flex flex-wrap gap-5 text-slate-500 text-sm">
-              {["Free 30-min audit", "No obligation", "Results in 2–3 weeks"].map((t) => (
+              {["Free 30-min audit", "No obligation", "Results in 2–3 weeks", "Global clients"].map((t) => (
                 <span key={t} className="flex items-center gap-1.5">
                   <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
@@ -222,6 +233,37 @@ export default function Home() {
                 <p className={`stat-number text-3xl md:text-4xl ${s.color} mb-1`}>{s.value}</p>
                 <p className="text-slate-500 text-xs uppercase tracking-widest font-heading">{s.label}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          TOOL LOGOS STRIP
+      ════════════════════════════════════════ */}
+      <section className="bg-[#050d1a] border-b border-white/6 py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-xs font-bold text-slate-600 uppercase tracking-widest mb-6">
+            We build on the tools your business already uses
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 max-w-3xl mx-auto">
+            {[
+              { name: "Zapier", color: "#FF4A00" },
+              { name: "Make", color: "#6D00CC" },
+              { name: "OpenAI", color: "#10a37f" },
+              { name: "n8n", color: "#EA4B71" },
+              { name: "Xero", color: "#13B5EA" },
+              { name: "HubSpot", color: "#FF7A59" },
+              { name: "Airtable", color: "#FCB400" },
+              { name: "Slack", color: "#4A154B" },
+            ].map((tool) => (
+              <span
+                key={tool.name}
+                className="text-sm font-bold font-heading opacity-40 hover:opacity-70 transition-opacity"
+                style={{ color: tool.color }}
+              >
+                {tool.name}
+              </span>
             ))}
           </div>
         </div>
