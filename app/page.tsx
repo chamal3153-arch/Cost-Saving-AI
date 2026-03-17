@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import HowItWorks from "./components/HowItWorks";
 import TechStack from "./components/TechStack";
-import Testimonials from "./components/Testimonials";
 import FAQSection from "./components/FAQSection";
 import ROICalculator from "./components/ROICalculator";
 
@@ -10,8 +9,8 @@ export const metadata: Metadata = {
   title: "Cost Saver AI – AI Automation That Saves SMBs 70-90% on Manual Costs",
   description:
     "Replace expensive manual work with done-for-you AI automation systems. Custom bots, dashboards, and integrations built in 2-3 weeks. You own it. No monthly fees.",
-    alternates: {
-    canonical: 'https://costsaverai.com',
+  alternates: {
+    canonical: "https://costsaverai.com",
   },
   openGraph: {
     title: "Cost Saver AI – AI Automation That Saves SMBs 70-90% on Manual Costs",
@@ -129,6 +128,42 @@ const stats = [
   { value: "$0", label: "Monthly retainer", color: "text-purple-400" },
 ];
 
+const testimonials = [
+  {
+    quote: "We were spending $4,200/month on a VA just for data entry and invoice processing. Cost Saver AI automated the entire workflow in 12 days. We haven't hired a VA since.",
+    name: "S.M.",
+    title: "Operations Director",
+    company: "Professional Services, AU",
+    avatar: "SM",
+    color: "from-blue-500 to-cyan-500",
+    stat: "$50k+",
+    statLabel: "saved in year one",
+    statColor: "text-blue-400",
+  },
+  {
+    quote: "Our Xero reports used to take our finance manager 3 hours every Monday morning. Now they're automatically in her inbox at 7am with AI-written insights. Genuinely unreal.",
+    name: "J.T.",
+    title: "CEO",
+    company: "Digital Agency, UK",
+    avatar: "JT",
+    color: "from-cyan-500 to-emerald-500",
+    stat: "3hrs → 0",
+    statLabel: "weekly report time",
+    statColor: "text-cyan-400",
+  },
+  {
+    quote: "I was sceptical — we'd tried 'AI tools' before and they were useless. These guys audited our processes, built a proper system, and deployed it in 18 days. Zero technical headaches.",
+    name: "P.S.",
+    title: "Finance Manager",
+    company: "Healthcare Group, NZ",
+    avatar: "PS",
+    color: "from-purple-500 to-blue-500",
+    stat: "18 days",
+    statLabel: "audit to live system",
+    statColor: "text-purple-400",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -144,7 +179,7 @@ export default function Home() {
       />
 
       {/* ════════════════════════════════════════
-          HERO — Dark, futuristic
+          HERO
       ════════════════════════════════════════ */}
       <section className="hero-dark grid-pattern relative min-h-[75vh] flex items-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 md:py-24">
@@ -159,7 +194,7 @@ export default function Home() {
             {/* Badge */}
             <div className="badge badge-blue mb-7 animate-fade-up">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              AI Automation for Small & Mid-Sized Businesses
+              AI Automation for Small &amp; Mid-Sized Businesses
             </div>
 
             {/* Headline */}
@@ -195,15 +230,15 @@ export default function Home() {
               </a>
               <Link
                 href="/audit-quiz"
-                className="btn-secondary text-base px-8 py-4 touch-manipulation border-slate-600 text-slate-300 hover:text-white hover:border-slate-400 hover:bg-white/5"
+                className="btn-secondary text-base px-8 py-4 touch-manipulation border-blue-500/40 text-blue-300 hover:text-white hover:border-blue-400 hover:bg-blue-500/10"
               >
-                ⚡ Take the Free ROI Quiz
+                ⚡ Calculate My ROI — Free
               </Link>
             </div>
 
             {/* Trust micro-copy */}
             <div className="flex flex-wrap gap-5 text-slate-500 text-sm">
-              {["Free 30-min audit", "No obligation", "Results in 2–3 weeks", "Global clients"].map((t) => (
+              {["Free 30-min audit", "No obligation", "Results in 2–3 weeks", "AU · NZ · UK · US · SG"].map((t) => (
                 <span key={t} className="flex items-center gap-1.5">
                   <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
@@ -215,7 +250,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Decorative floating elements */}
+        {/* Decorative float */}
         <div className="absolute bottom-10 right-10 hidden xl:block opacity-30 animate-float pointer-events-none">
           <div className="w-40 h-40 rounded-2xl border border-blue-500/30 bg-blue-500/5 flex items-center justify-center">
             <svg className="w-16 h-16 text-blue-500/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,6 +259,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ════════════════════════════════════════
+          ROI CALCULATOR  ← moved to position #2
+      ════════════════════════════════════════ */}
+      <ROICalculator />
 
       {/* ════════════════════════════════════════
           STATS BAR
@@ -273,20 +313,21 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════
-          PROBLEM SECTION
+          PROBLEM SECTION  — dark theme
       ════════════════════════════════════════ */}
-      <section className="bg-white py-20 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#0a1628] py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-red-600/4 blur-[120px] pointer-events-none" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div>
                 <div className="badge badge-blue mb-5">
                   <span>⚠️</span> The Problem
                 </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 font-heading mb-6" style={{ letterSpacing: "-0.02em" }}>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-heading mb-6" style={{ letterSpacing: "-0.02em" }}>
                   Manual Work is Quietly Draining Your Business
                 </h2>
-                <p className="text-slate-500 text-lg leading-relaxed mb-8">
+                <p className="text-slate-400 text-lg leading-relaxed mb-8">
                   Most SMBs are spending tens of thousands per year on tasks that AI can handle in seconds —
                   not because they haven&apos;t heard of AI, but because nobody&apos;s built them a system that actually works.
                 </p>
@@ -300,34 +341,14 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {[
-                  {
-                    problem: "Paying a VA $3k–$5k/month to copy data between systems",
-                    icon: "💸",
-                    color: "border-red-200 bg-red-50/50",
-                    text: "text-red-700",
-                  },
-                  {
-                    problem: "Finance manager spending Monday mornings on manual reports",
-                    icon: "⏰",
-                    color: "border-orange-200 bg-orange-50/50",
-                    text: "text-orange-700",
-                  },
-                  {
-                    problem: "Leads falling through cracks because CRM isn't updated",
-                    icon: "📉",
-                    color: "border-yellow-200 bg-yellow-50/50",
-                    text: "text-yellow-700",
-                  },
-                  {
-                    problem: "Customer emails going unread for hours (or days)",
-                    icon: "📬",
-                    color: "border-red-200 bg-red-50/50",
-                    text: "text-red-700",
-                  },
+                  { problem: "Paying a VA $3k–$5k/month to copy data between systems", icon: "💸", border: "border-red-500/20", bg: "bg-red-500/6", text: "text-red-300" },
+                  { problem: "Finance manager spending Monday mornings on manual reports", icon: "⏰", border: "border-orange-500/20", bg: "bg-orange-500/6", text: "text-orange-300" },
+                  { problem: "Leads falling through cracks because CRM isn't updated", icon: "📉", border: "border-yellow-500/20", bg: "bg-yellow-500/6", text: "text-yellow-300" },
+                  { problem: "Customer emails going unread for hours (or days)", icon: "📬", border: "border-red-500/20", bg: "bg-red-500/6", text: "text-red-300" },
                 ].map((item, i) => (
-                  <div key={i} className={`flex items-start gap-4 p-4 rounded-xl border ${item.color}`}>
+                  <div key={i} className={`flex items-start gap-4 p-4 rounded-xl border ${item.border} ${item.bg}`}>
                     <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
                     <p className={`text-sm font-medium ${item.text} leading-snug`}>{item.problem}</p>
                   </div>
@@ -354,7 +375,7 @@ export default function Home() {
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 font-heading mb-4" style={{ letterSpacing: "-0.02em" }}>
               Everything You Need to{" "}
-              <span className="gradient-text">Automate & Scale</span>
+              <span className="gradient-text">Automate &amp; Scale</span>
             </h2>
             <p className="text-slate-500 text-lg">
               End-to-end AI systems built specifically for your business — not generic SaaS tools.
@@ -397,59 +418,69 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════
-          ROI CALCULATOR
+          TESTIMONIALS — dark
       ════════════════════════════════════════ */}
-      <ROICalculator />
-
-      {/* ════════════════════════════════════════
-          AUDIT QUIZ CTA
-      ════════════════════════════════════════ */}
-      <section className="bg-[#050d1a] relative overflow-hidden py-20 md:py-24">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-cyan-600/8 blur-[120px]" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-blue-600/6 blur-[100px]" />
-        </div>
+      <section className="bg-[#050d1a] py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-blue-600/5 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-cyan-600/4 blur-[100px] pointer-events-none" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="rounded-2xl border border-blue-500/20 bg-[#0a1628] overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                {/* Left — copy */}
-                <div className="p-8 md:p-10 lg:border-r border-blue-500/10">
-                  <div className="badge badge-cyan mb-5">
-                    <span>⚡</span> Free 2-Min Quiz
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white font-heading mb-4" style={{ letterSpacing: '-0.02em' }}>
-                    Not Sure Where to Start?{' '}
-                    <span className="gradient-text-blue-cyan">Find Out in 2 Minutes.</span>
-                  </h2>
-                  <p className="text-slate-400 text-base leading-relaxed mb-6">
-                    Our Automation Audit Quiz asks 5 quick questions about your business — and gives you a personalised ROI estimate, payback period, and recommended solution.
-                  </p>
-                  <Link
-                    href="/audit-quiz"
-                    className="btn-primary inline-flex text-sm px-6 py-3"
-                  >
-                    Take the Free Quiz →
-                  </Link>
-                  <p className="text-slate-600 text-xs mt-3">No sign-up required. Results are instant.</p>
-                </div>
-                {/* Right — proof points */}
-                <div className="p-8 md:p-10 flex flex-col justify-center gap-5">
-                  {[
-                    { icon: '📊', text: 'See your estimated monthly savings in dollars' },
-                    { icon: '⏱️', text: 'Get your payback period — typically 1–3 months' },
-                    { icon: '🎯', text: 'Receive a recommended service matched to your pain point' },
-                    { icon: '📧', text: 'Optionally get a full personalised report emailed to you' },
-                  ].map((item) => (
-                    <div key={item.text} className="flex items-start gap-3">
-                      <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
-                      <p className="text-slate-300 text-sm leading-relaxed">{item.text}</p>
-                    </div>
+
+          <div className="max-w-3xl mx-auto text-center mb-14">
+            <div className="badge badge-blue mx-auto mb-5">
+              <span>⭐</span> Client Results
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-heading mb-4" style={{ letterSpacing: "-0.02em" }}>
+              Real Businesses.{" "}
+              <span className="gradient-text-blue-cyan">Real Savings.</span>
+            </h2>
+            <p className="text-slate-400 text-lg">
+              What happens when you replace manual work with intelligent automation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+            {testimonials.map((t, i) => (
+              <div
+                key={i}
+                className="bg-[#0a1628] border border-white/8 rounded-2xl p-7 flex flex-col gap-5 hover:border-blue-500/30 hover:shadow-[0_0_30px_rgba(59,130,246,0.08)] transition-all duration-300"
+              >
+                {/* Stars */}
+                <div className="flex gap-0.5">
+                  {[1,2,3,4,5].map(n => (
+                    <svg key={n} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
                   ))}
                 </div>
+
+                {/* Quote */}
+                <blockquote className="text-slate-300 text-sm leading-relaxed flex-1">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+
+                {/* Stat callout */}
+                <div className="bg-white/4 border border-white/8 rounded-xl px-5 py-4 text-center">
+                  <p className={`stat-number text-2xl font-bold font-heading ${t.statColor}`}>{t.stat}</p>
+                  <p className="text-slate-500 text-xs mt-0.5 font-heading">{t.statLabel}</p>
+                </div>
+
+                {/* Author */}
+                <div className="flex items-center gap-3 pt-1 border-t border-white/6">
+                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center flex-shrink-0`}>
+                    <span className="text-white text-xs font-bold font-heading">{t.avatar}</span>
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold text-sm font-heading">{t.name}</p>
+                    <p className="text-slate-500 text-xs">{t.title} · {t.company}</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
+
+          <p className="text-center text-slate-700 text-xs mt-8">
+            Names withheld per confidentiality agreements. Results vary by project scope.
+          </p>
         </div>
       </section>
 
@@ -459,17 +490,12 @@ export default function Home() {
       <TechStack />
 
       {/* ════════════════════════════════════════
-          TESTIMONIALS
-      ════════════════════════════════════════ */}
-      <Testimonials />
-
-      {/* ════════════════════════════════════════
           FAQ
       ════════════════════════════════════════ */}
       <FAQSection />
 
       {/* ════════════════════════════════════════
-          FINAL CTA — Dark
+          FINAL CTA
       ════════════════════════════════════════ */}
       <section className="bg-[#050d1a] relative overflow-hidden py-24 md:py-32">
         <div className="absolute inset-0 pointer-events-none">
@@ -504,12 +530,12 @@ export default function Home() {
               >
                 Book My Free Audit Now →
               </a>
-              <a
-                href="mailto:costsaverai@proton.me"
-                className="btn-secondary text-base px-8 py-4 border-slate-700 text-slate-300 hover:text-white hover:border-slate-500 touch-manipulation"
+              <Link
+                href="/audit-quiz"
+                className="btn-secondary text-base px-8 py-4 border-blue-500/30 text-blue-300 hover:text-white hover:border-blue-400 hover:bg-blue-500/10 touch-manipulation"
               >
-                Email Us Instead
-              </a>
+                ⚡ Get ROI Estimate First
+              </Link>
             </div>
 
             <p className="text-slate-600 text-sm mt-6">
