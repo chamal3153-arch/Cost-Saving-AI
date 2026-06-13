@@ -3,13 +3,16 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: 'export', // Export static HTML files
   images: {
-    unoptimized: true, // Required for static export
-    // Allow remote images for future leadership photos.
-    // TODO: Replace "example.com" with your real image host (e.g., Cloudinary, S3, Webflow CDN).
+    unoptimized: true, // Required for Cloudflare Pages static export
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "example.com",
+        hostname: "costsaverai.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "budgetplanai.com",
         pathname: "/**",
       },
     ],

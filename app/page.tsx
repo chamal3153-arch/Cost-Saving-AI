@@ -330,6 +330,38 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════
+          RECOMMENDED COST-SAVING TOOLS
+      ════════════════════════════════════════ */}
+      <section className="bg-[#050d1a] border-b border-white/6 py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-xs font-bold text-slate-600 uppercase tracking-widest mb-8">
+            Recommended cost-saving tools for SMBs
+          </p>
+          <div className="flex flex-wrap justify-center gap-5 max-w-3xl mx-auto">
+            <a
+              href="https://budgetplanai.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-[#0a1628] border border-blue-500/20 hover:border-blue-400/50 rounded-xl px-5 py-3.5 transition-all duration-200 group"
+            >
+              <div className="w-8 h-8 rounded-lg bg-blue-500/15 flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
+                </svg>
+              </div>
+              <div className="text-left">
+                <p className="text-sm font-bold text-white group-hover:text-blue-300 transition-colors font-heading">BudgetPlan AI</p>
+                <p className="text-xs text-slate-500">AI-powered budget planning & forecasting</p>
+              </div>
+              <svg className="w-3.5 h-3.5 text-slate-600 group-hover:text-blue-400 transition-colors ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
           PROBLEM SECTION  — dark theme
       ════════════════════════════════════════ */}
       <section className="bg-[#0a1628] py-20 md:py-28 relative overflow-hidden">

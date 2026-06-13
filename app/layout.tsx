@@ -102,6 +102,10 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://calendly.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -258,6 +262,22 @@ export default function RootLayout({
                     </Link>
                   ))}
                 </nav>
+
+                <h3 className="text-sm font-semibold text-white mt-7 mb-4 tracking-wide uppercase" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+                  Recommended Tools
+                </h3>
+                <a
+                  href="https://budgetplanai.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  BudgetPlan AI
+                  <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <p className="text-xs text-slate-600 mt-1">AI-powered budget planning</p>
               </div>
 
               {/* CTA col */}
