@@ -1,133 +1,55 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { blogPosts } from "../lib/blogData";
 
 export const metadata: Metadata = {
-  title: "Free AI Tools for SMBs – Cut Costs Starting Today",
+  title: "Tools & Resources – AI Tools by Cost Saver AI",
   description:
-    "Free tools built by Cost Saver AI to help small businesses reduce costs, plan smarter, and identify automation opportunities. No sign-up required.",
+    "Personal finance tools, business automation tools, and practical guides — built by Cost Saver AI to help individuals and SMBs save money and work smarter.",
   alternates: {
     canonical: "https://costsaverai.com/tools",
   },
   openGraph: {
-    title: "Free AI Tools for SMBs – Cost Saver AI",
+    title: "Tools & Resources – Cost Saver AI",
     description:
-      "Free cost-saving tools for small and mid-sized businesses — budget planning, ROI calculators, automation audits, and more.",
+      "Personal and business AI tools plus practical guides from Cost Saver AI.",
     type: "website",
   },
 };
 
-const tools = [
+const businessToolsUpcoming = [
   {
-    name: "BudgetPlan AI",
-    tagline: "AI-Powered Budget Planning & Forecasting",
-    description:
-      "Stop guessing where your money is going. BudgetPlan AI helps small businesses build smarter budgets, forecast cash flow, and spot overspending before it becomes a crisis.",
-    href: "https://budgetplanai.com",
-    external: true,
-    badge: "Free to Use",
-    badgeColor: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
-    color: "border-blue-500/30",
-    glowColor: "rgba(59,130,246,0.06)",
-    accentColor: "text-blue-400",
-    iconColor: "#3b82f6",
-    features: [
-      "AI-generated budget recommendations",
-      "Cash flow forecasting",
-      "Overspending alerts",
-      "Built for SMBs — not enterprise complexity",
-    ],
+    name: "Automation ROI Tracker",
+    description: "Connect your tools and track exactly how much your automations are saving you — in real time.",
     icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
-      </svg>
-    ),
-    cta: "Open BudgetPlan AI →",
-    featured: true,
-  },
-  {
-    name: "Free ROI Calculator",
-    tagline: "See Exactly How Much Manual Work Is Costing You",
-    description:
-      "Enter your team size, hourly rates, and the manual tasks eating up your week. Get an instant breakdown of your monthly waste, potential savings, ROI %, and payback period.",
-    href: "/#roi-calculator",
-    external: false,
-    badge: "Takes 2 Minutes",
-    badgeColor: "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20",
-    color: "border-cyan-500/30",
-    glowColor: "rgba(6,182,212,0.06)",
-    accentColor: "text-cyan-400",
-    iconColor: "#06b6d4",
-    features: [
-      "Instant cost-of-manual-work estimate",
-      "Projected savings after automation",
-      "ROI % and payback period",
-      "No sign-up, no email required",
-    ],
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
-    cta: "Calculate My ROI →",
-    featured: false,
   },
   {
-    name: "Automation Audit Quiz",
-    tagline: "Find Your Highest-ROI Automation in 3 Minutes",
-    description:
-      "Answer 8 quick questions about your business processes. The quiz identifies which manual tasks are costing you the most and recommends where to start with automation.",
-    href: "/audit-quiz",
-    external: false,
-    badge: "Free Instant Results",
-    badgeColor: "bg-purple-500/10 text-purple-400 border border-purple-500/20",
-    color: "border-purple-500/30",
-    glowColor: "rgba(139,92,246,0.06)",
-    accentColor: "text-purple-400",
-    iconColor: "#8b5cf6",
-    features: [
-      "8 targeted questions about your business",
-      "Personalised automation recommendations",
-      "Cost estimate for each opportunity",
-      "Instant results — no waiting",
-    ],
+    name: "AI Workflow Builder",
+    description: "Map and design your automation workflows visually before we build them — see the logic before a single line of code is written.",
     icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
       </svg>
     ),
-    cta: "Take the Quiz →",
-    featured: false,
   },
   {
-    name: "SMB Automation Blog",
-    tagline: "Real Cost Breakdowns & How-To Guides",
-    description:
-      "Practical guides written for business owners — not developers. Real cost estimates, step-by-step automation walkthroughs, and honest breakdowns of what works and what doesn't.",
-    href: "/blog",
-    external: false,
-    badge: "Free to Read",
-    badgeColor: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
-    color: "border-emerald-500/30",
-    glowColor: "rgba(16,185,129,0.06)",
-    accentColor: "text-emerald-400",
-    iconColor: "#10b981",
-    features: [
-      "Invoice automation cost breakdowns",
-      "AI chatbot ROI guides",
-      "Step-by-step workflow tutorials",
-      "New articles added regularly",
-    ],
+    name: "Staff Cost Calculator",
+    description: "Calculate the true loaded cost of manual tasks across your team — including salary, on-costs, and hidden overhead.",
     icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
     ),
-    cta: "Read the Blog →",
-    featured: false,
   },
 ];
 
 export default function ToolsPage() {
+  const recentPosts = [...blogPosts].slice(0, 3);
+
   return (
     <>
       {/* Hero */}
@@ -137,147 +59,225 @@ export default function ToolsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div className="badge badge-blue mx-auto mb-6">
-              <span>🛠️</span> Free Tools
+              <span>🛠️</span> Tools & Resources
             </div>
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-heading mb-6"
               style={{ letterSpacing: "-0.03em" }}
             >
-              Free Tools to{" "}
-              <span className="gradient-text-blue-cyan">Cut Business Costs</span>
+              Tools Built to{" "}
+              <span className="gradient-text-blue-cyan">Save You Money</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Built by Cost Saver AI for small and mid-sized businesses. Use them free — no sign-up, no strings attached.
+              Personal finance tools, upcoming business automation tools, and practical guides — all from Cost Saver AI.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Tools Grid */}
-      <section className="bg-[#050d1a] py-16 md:py-24">
+      {/* ── PERSONAL TOOLS ── */}
+      <section className="bg-[#050d1a] pt-16 md:pt-24 pb-12 md:pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {tools.map((tool) => {
-              const CardWrapper = ({ children }: { children: React.ReactNode }) =>
-                tool.external ? (
-                  <a
-                    href={tool.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`relative rounded-2xl border ${tool.color} p-8 flex flex-col transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_40px_rgba(59,130,246,0.1)] group`}
-                    style={{ background: `radial-gradient(ellipse at top left, ${tool.glowColor}, transparent 60%), #0a1628` }}
-                  >
-                    {children}
-                  </a>
-                ) : (
-                  <Link
-                    href={tool.href}
-                    className={`relative rounded-2xl border ${tool.color} p-8 flex flex-col transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_40px_rgba(59,130,246,0.1)] group`}
-                    style={{ background: `radial-gradient(ellipse at top left, ${tool.glowColor}, transparent 60%), #0a1628` }}
-                  >
-                    {children}
-                  </Link>
-                );
+          <div className="max-w-5xl mx-auto">
 
-              return (
-                <CardWrapper key={tool.name}>
-                  {tool.featured && (
-                    <div className="absolute -top-3.5 left-8">
-                      <span className="bg-blue-500 text-white text-xs font-bold px-4 py-1.5 rounded-full tracking-wide uppercase">
-                        Featured Tool
-                      </span>
-                    </div>
-                  )}
+            {/* Section label */}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="badge badge-blue">
+                <span>👤</span> Personal Tools
+              </div>
+              <div className="h-px flex-1 bg-white/6" />
+            </div>
 
-                  {/* Header */}
-                  <div className="flex items-start gap-4 mb-5">
-                    <div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: `${tool.iconColor}18`, color: tool.iconColor }}
-                    >
-                      {tool.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap mb-1">
-                        <h2 className={`text-xl font-bold text-white font-heading group-hover:${tool.accentColor} transition-colors`}>
-                          {tool.name}
-                        </h2>
-                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${tool.badgeColor}`}>
-                          {tool.badge}
-                        </span>
-                      </div>
-                      <p className="text-slate-400 text-sm font-medium">{tool.tagline}</p>
-                    </div>
+            <p className="text-slate-500 text-sm mb-8 -mt-4">
+              Tools for individuals to take control of personal finances and everyday costs.
+            </p>
+
+            {/* BudgetPlan AI — featured card */}
+            <a
+              href="https://budgetplanai.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block rounded-2xl border border-blue-500/30 p-8 md:p-10 transition-all duration-300 hover:scale-[1.01] hover:border-blue-400/50 hover:shadow-[0_0_50px_rgba(59,130,246,0.12)]"
+              style={{ background: "radial-gradient(ellipse at top left, rgba(59,130,246,0.07), transparent 60%), #0a1628" }}
+            >
+              <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-2xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
+                  </svg>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <h2 className="text-2xl font-bold text-white font-heading group-hover:text-blue-300 transition-colors">
+                      BudgetPlan AI
+                    </h2>
+                    <span className="text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full uppercase tracking-wide">
+                      Live Now
+                    </span>
                   </div>
+                  <p className="text-blue-300 font-medium mb-3">AI-Powered Budget Planning & Forecasting</p>
+                  <p className="text-slate-400 text-sm leading-relaxed max-w-xl">
+                    Stop guessing where your money goes. BudgetPlan AI helps you build smarter personal budgets, forecast your cash flow, and spot overspending before it becomes a problem — powered by AI.
+                  </p>
 
-                  {/* Description */}
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6">{tool.description}</p>
-
-                  {/* Features */}
-                  <ul className="space-y-2 mb-8 flex-1">
-                    {tool.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
-                        <svg className={`w-4 h-4 mt-0.5 flex-shrink-0 ${tool.accentColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                    {[
+                      "AI budget recommendations",
+                      "Cash flow forecasting",
+                      "Overspending alerts",
+                      "Built for personal use",
+                    ].map((f) => (
+                      <li key={f} className="flex items-center gap-1.5 text-sm text-slate-300">
+                        <svg className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                         {f}
                       </li>
                     ))}
                   </ul>
+                </div>
 
-                  {/* CTA */}
-                  <div className={`inline-flex items-center gap-2 font-semibold text-sm ${tool.accentColor} group-hover:gap-3 transition-all duration-200`}>
-                    {tool.cta}
-                    {tool.external && (
-                      <svg className="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    )}
-                  </div>
-                </CardWrapper>
-              );
-            })}
+                {/* Arrow */}
+                <div className="flex-shrink-0">
+                  <span className="inline-flex items-center gap-2 text-blue-400 font-semibold text-sm group-hover:gap-3 transition-all duration-200 whitespace-nowrap">
+                    Open BudgetPlan AI
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Divider — custom build CTA */}
-      <section className="bg-[#0d1b2e] border-y border-white/6 py-16 md:py-20">
+      {/* ── BUSINESS TOOLS (UPCOMING) ── */}
+      <section className="bg-[#050d1a] py-12 md:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="badge badge-blue mx-auto mb-5">
-              <span>⚡</span> Need Something Custom?
+          <div className="max-w-5xl mx-auto">
+
+            {/* Section label */}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="badge" style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.2)", color: "#fbbf24" }}>
+                <span>🏢</span> Business Tools
+              </div>
+              <span className="text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full uppercase tracking-wide">
+                Coming Soon
+              </span>
+              <div className="h-px flex-1 bg-white/6" />
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-heading mb-4" style={{ letterSpacing: "-0.02em" }}>
-              These Tools Show You the Problem.{" "}
-              <span className="gradient-text-blue-cyan">We Build the Fix.</span>
-            </h2>
-            <p className="text-slate-400 text-lg mb-8 max-w-xl mx-auto">
-              If your ROI calculator or audit reveals a real opportunity, we&apos;ll scope and build a custom automation system — fixed price, you own it outright.
+
+            <p className="text-slate-500 text-sm mb-8 -mt-4">
+              Dedicated tools for SMBs to measure, plan, and manage automation — currently in development.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://calendly.com/chamal-3153/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary px-8 py-4"
-              >
-                Book Free Audit →
-              </a>
-              <Link href="/services" className="btn-secondary px-8 py-4 border-slate-600 text-slate-300 hover:text-white hover:border-slate-400">
-                View Services
-              </Link>
-            </div>
-            <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-slate-500">
-              {["Projects from $400", "Deploy in 2–3 weeks", "You own it outright", "No monthly fees"].map((t) => (
-                <span key={t} className="flex items-center gap-1.5">
-                  <svg className="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {t}
-                </span>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {businessToolsUpcoming.map((tool) => (
+                <div
+                  key={tool.name}
+                  className="rounded-xl border border-white/6 bg-white/2 p-6 opacity-70"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center mb-4 text-slate-500">
+                    {tool.icon}
+                  </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-white font-semibold font-heading text-sm">{tool.name}</h3>
+                    <span className="text-xs text-amber-400 bg-amber-500/10 border border-amber-500/15 px-2 py-0.5 rounded-full">Soon</span>
+                  </div>
+                  <p className="text-slate-600 text-xs leading-relaxed">{tool.description}</p>
+                </div>
               ))}
             </div>
+
+            <p className="text-center text-xs text-slate-600 mt-6">
+              Want early access?{" "}
+              <a href="mailto:costsaverai@proton.me" className="text-blue-600 hover:text-blue-500 underline underline-offset-2">
+                Email us
+              </a>{" "}
+              and we&apos;ll notify you when they launch.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BLOG & RESOURCES ── */}
+      <section className="bg-[#0a1628] border-t border-white/6 py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+
+            {/* Section label */}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="badge" style={{ background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.2)", color: "#34d399" }}>
+                <span>📚</span> Blog & Resources
+              </div>
+              <div className="h-px flex-1 bg-white/6" />
+            </div>
+
+            <p className="text-slate-500 text-sm mb-10 -mt-4">
+              Practical guides on cutting costs and automating your business — written for owners, not developers.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {recentPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group rounded-xl border border-white/8 bg-[#0d1b2e] p-6 hover:border-emerald-500/30 hover:shadow-[0_0_25px_rgba(16,185,129,0.06)] transition-all duration-200"
+                >
+                  <div className="text-3xl mb-4">{post.coverEmoji}</div>
+                  <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wide mb-2 block">
+                    {post.category}
+                  </span>
+                  <h3 className="text-white font-semibold font-heading text-sm leading-snug mb-3 group-hover:text-emerald-300 transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-4">
+                    {post.description}
+                  </p>
+                  <div className="flex items-center gap-3 text-xs text-slate-600">
+                    <span>{post.readingTime}</span>
+                    <span>·</span>
+                    <span>{new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <Link
+                href="/blog"
+                className="btn-secondary inline-flex text-sm px-6 py-3 border-slate-600 text-slate-300 hover:text-white hover:border-slate-400"
+              >
+                View All Articles →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-[#050d1a] border-t border-white/6 py-16 md:py-20 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-blue-600/6 blur-[120px] pointer-events-none" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="max-w-xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-heading mb-3" style={{ letterSpacing: "-0.02em" }}>
+              Ready to Cut Real Business Costs?
+            </h2>
+            <p className="text-slate-400 mb-7">
+              Book a free 30-minute audit — we&apos;ll identify your highest-ROI automation opportunity and give you a fixed quote.
+            </p>
+            <a
+              href="https://calendly.com/chamal-3153/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary px-8 py-4"
+            >
+              Book Free Audit →
+            </a>
           </div>
         </div>
       </section>

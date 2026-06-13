@@ -166,7 +166,7 @@ export default function RootLayout({
                   {[
                     { href: "/", label: "Home" },
                     { href: "/services", label: "Services" },
-                    { href: "/tools", label: "Free Tools" },
+                    { href: "/tools", label: "Tools & Resources" },
                     { href: "/case-studies", label: "Case Studies" },
                     { href: "/about", label: "About" },
                     { href: "/contact", label: "Contact" },
@@ -250,7 +250,7 @@ export default function RootLayout({
                 <nav className="flex flex-col space-y-2.5">
                   {[
                     { href: "/services", label: "All Services" },
-                    { href: "/tools", label: "Free Tools" },
+                    { href: "/tools", label: "Tools & Resources" },
                     { href: "/case-studies", label: "Case Studies" },
                     { href: "/audit-quiz", label: "Free ROI Quiz" },
                     { href: "/newsletter", label: "Newsletter" },
