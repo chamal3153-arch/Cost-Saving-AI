@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "What ROI can I realistically expect?",
     answer:
-      "Our clients typically see 70–90% reduction in the manual costs being automated. The average client saves $2,000–$8,000/month within the first 60 days. The ROI calculator on this page gives a personalised estimate based on your inputs.",
+      "Our clients typically see 70–90% reduction in the manual costs being automated. The average client saves $2,000–$8,000/month within the first 60 days. The ROI calculator on our homepage gives a personalised estimate based on your inputs.",
   },
   {
     question: "Is my business data secure with your automation systems?",
@@ -42,6 +42,36 @@ const faqs = [
     question: "What size businesses do you work with?",
     answer:
       "We specialise in small and mid-sized businesses — typically 5 to 500 employees with annual revenue between $500k and $50M. The sweet spot is businesses doing $1M–$10M in revenue that have outgrown manual processes but haven't yet built out a full tech team.",
+  },
+  {
+    question: "How does project-based pricing work?",
+    answer:
+      "We scope your project during a free 30-minute audit call. You get a fixed quote before any work starts. No surprises, no scope creep fees. Projects range from $400 for a single workflow automation up to $10,000+ for a full AI operations overhaul.",
+  },
+  {
+    question: "What if my project is between pricing tiers?",
+    answer:
+      "The tiers are guides, not boxes. Every quote is custom. If your project is a $2,200 job, that's what you pay. We scope it precisely on the audit call and give you an itemised quote within 24 hours.",
+  },
+  {
+    question: "How fast can you start after I book?",
+    answer:
+      "Usually within 1–3 business days of project approval. Starter projects can often be live in under a week. We'll confirm the exact start date when we send your fixed quote.",
+  },
+  {
+    question: "What if I don't know exactly what I need?",
+    answer:
+      "That's exactly what the free audit is for. We'll map your current processes, identify where money is being lost, and recommend the highest-ROI automation — with a fixed quote. No obligation.",
+  },
+  {
+    question: "Do you offer payment plans?",
+    answer:
+      "Yes. For Growth and Enterprise projects we typically split 50% upfront, 50% on delivery. For larger projects we can discuss milestone-based payments. Book a call and we'll work out what suits you.",
+  },
+  {
+    question: "What happens after the system is live?",
+    answer:
+      "All projects include a post-launch support period (2–8 weeks depending on tier), a handover walkthrough, and full documentation. After that, the system runs independently — but we're always available for paid maintenance or additions.",
   },
 ];
 
