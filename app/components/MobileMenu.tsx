@@ -45,63 +45,33 @@ export default function MobileMenu() {
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <nav className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+        <nav className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="flex flex-col space-y-1 px-4 py-4">
+            {[
+              { href: "/", label: "Home" },
+              { href: "/services", label: "Services" },
+              { href: "/tools", label: "Tools & Resources" },
+              { href: "/case-studies", label: "Case Studies" },
+              { href: "/about", label: "About" },
+              { href: "/contact", label: "Contact" },
+              { href: "/faq", label: "FAQ" },
+              { href: "/blog", label: "Blog" },
+            ].map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setIsOpen(false)}
+                className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
+              >
+                {label}
+              </Link>
+            ))}
             <Link
-              href="/"
+              href="/#roi-calculator"
               onClick={() => setIsOpen(false)}
-              className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
+              className="px-4 py-3 text-base font-medium text-blue-600 hover:bg-blue-50 rounded-md transition-colors min-h-[44px] flex items-center gap-2"
             >
-              Home
-            </Link>
-            <Link
-              href="/services"
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
-            >
-              Services
-            </Link>
-            <Link
-              href="/pricing"
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/case-studies"
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
-            >
-              Case Studies
-            </Link>
-            <Link
-              href="/audit-quiz"
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
-            >
-              Free ROI Quiz
-            </Link>
-            <Link
-              href="/newsletter"
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
-            >
-              Newsletter
-            </Link>
-            <Link
-              href="/about"
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors min-h-[44px] flex items-center"
-            >
-              Contact
+              ⚡ ROI Calculator
             </Link>
             <a
               href="https://calendly.com/chamal-3153/30min"
