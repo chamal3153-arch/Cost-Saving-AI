@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { blogPosts } from "../lib/blogData";
 
 export const metadata: Metadata = {
   title: "Tools & Resources – AI Tools by Cost Saver AI",
@@ -48,8 +47,6 @@ const businessToolsUpcoming = [
 ];
 
 export default function ToolsPage() {
-  const recentPosts = [...blogPosts].slice(0, 3);
-
   return (
     <>
       {/* Hero */}
@@ -200,61 +197,6 @@ export default function ToolsPage() {
               </a>{" "}
               and we&apos;ll notify you when they launch.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── BLOG & RESOURCES ── */}
-      <section className="bg-[#0a1628] border-t border-white/6 py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-
-            {/* Section label */}
-            <div className="flex items-center gap-3 mb-8">
-              <div className="badge" style={{ background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.2)", color: "#34d399" }}>
-                <span>📚</span> Blog & Resources
-              </div>
-              <div className="h-px flex-1 bg-white/6" />
-            </div>
-
-            <p className="text-slate-500 text-sm mb-10 -mt-4">
-              Practical guides on cutting costs and automating your business — written for owners, not developers.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {recentPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group rounded-xl border border-white/8 bg-[#0d1b2e] p-6 hover:border-emerald-500/30 hover:shadow-[0_0_25px_rgba(16,185,129,0.06)] transition-all duration-200"
-                >
-                  <div className="text-3xl mb-4">{post.coverEmoji}</div>
-                  <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wide mb-2 block">
-                    {post.category}
-                  </span>
-                  <h3 className="text-white font-semibold font-heading text-sm leading-snug mb-3 group-hover:text-emerald-300 transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-4">
-                    {post.description}
-                  </p>
-                  <div className="flex items-center gap-3 text-xs text-slate-600">
-                    <span>{post.readingTime}</span>
-                    <span>·</span>
-                    <span>{new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            <div className="text-center mt-8">
-              <Link
-                href="/blog"
-                className="btn-secondary inline-flex text-sm px-6 py-3 border-slate-600 text-slate-300 hover:text-white hover:border-slate-400"
-              >
-                View All Articles →
-              </Link>
-            </div>
           </div>
         </div>
       </section>

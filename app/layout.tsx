@@ -171,6 +171,7 @@ export default function RootLayout({
                     { href: "/about", label: "About" },
                     { href: "/contact", label: "Contact" },
                     { href: "/faq", label: "FAQ" },
+                    { href: "/blog", label: "Blog" },
                   ].map(({ href, label }) => (
                     <Link
                       key={href}
